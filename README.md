@@ -62,7 +62,13 @@
 - **目标**：实现 LLM 调用外部函数，赋予模型“执行力”。
 - **内容**：Function calling原理、工具函数封装、API接入实践、多轮调用流程、Agent能力扩展。
 
-> 📌 后续模块将陆续开放（LangChain、RAG、MCP、多智能体等），建议先完整学习前 3 个模块，为进阶模块打好基础。
+### ✅ 模块 04 — LangChain 基础篇
+
+- **目标**：认识Langchain六大模块，学会用Langchain构建智能体。
+- **内容**：LLM 调用｜Prompt 设计｜Chain 构建｜Memory 记忆｜实战练习
+
+
+> 📌 后续模块将陆续开放（LangChain、RAG、MCP、多智能体等）
 
 ---
 
