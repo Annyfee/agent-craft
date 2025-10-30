@@ -27,7 +27,7 @@
 |             | [02 LLM 基础调用](https://github.com/Annyfee/agent-craft/tree/main/02_llm_fundamentals)                     | [🏠](https://blog.csdn.net/2401_87328929/article/details/153735431) | LLM API 调用 · prompt · 上下文记忆     |  ⭐   |
 |             | [03 Function Calling 与工具调用](https://github.com/Annyfee/agent-craft/tree/main/03_function_calling_tools) | [🏠](https://blog.csdn.net/2401_87328929/article/details/153866573) | Function Call · 工具函数封装          |  ⭐⭐  |
 | ⚙️ **框架篇**  | [04 LangChain 基础篇](https://github.com/Annyfee/agent-craft/tree/main/04_langchain_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/153978186) | LLM · Prompt · Chain · Memory   |  ⭐⭐  |
-|             | 05 LangChain 进阶篇                                                                                        |                                🚧撰写中                                | Agents · 多链协作 · 缓存              | ⭐⭐⭐  |
+|             | 05 LangChain 进阶篇                                                                                        | [🏠](https://blog.csdn.net/2401_87328929/article/details/154064397) | Agents · 多链协作 · 缓存              | ⭐⭐⭐  |
 |             | 06 LangGraph 入门                                                                                         |                                 🚧                                  | Flow · Node · Edge 控制           | ⭐⭐⭐  |
 |             | 07 RAG 基础篇（Embedding & 向量）                                                                              |                                 🚧                                  | 向量化 · 检索匹配                      |  ⭐⭐  |
 |             | 08 RAG 进阶篇（检索 + 生成）                                                                                     |                                 🚧                                  | RAG Pipeline · QA 系统            | ⭐⭐⭐  |
@@ -67,8 +67,13 @@
 - **目标**：认识Langchain六大模块，学会用Langchain构建智能体。
 - **内容**：LLM 调用｜Prompt 设计｜Chain 构建｜Memory 记忆｜实战练习
 
+### ✅ 模块 05 — LangChain 进阶篇
 
-> 📌 后续模块将陆续开放（LangChain、RAG、MCP、多智能体等）
+- **目标**：掌握Langchain Agents的核心机制，构建能调用工具、持续思考、具备记忆的智能体。
+- **内容**：Function Calling｜@tool 工具封装｜ReAct 循环｜Agent 构建｜SQL Agent｜记忆+流式｜开发优化
+
+
+> 📌 后续模块将陆续开放（LangGraph、RAG、MCP、多智能体等）
 
 ---
 
