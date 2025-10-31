@@ -28,9 +28,9 @@
 |             | [03 Function Calling 与工具调用](https://github.com/Annyfee/agent-craft/tree/main/03_function_calling_tools) | [🏠](https://blog.csdn.net/2401_87328929/article/details/153866573) | Function Call · 工具函数封装          |  ⭐⭐  |
 | ⚙️ **框架篇**  | [04 LangChain 基础篇](https://github.com/Annyfee/agent-craft/tree/main/04_langchain_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/153978186) | LLM · Prompt · Chain · Memory   |  ⭐⭐  |
 |             | [05 LangChain 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/05_langchain_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154064397) | Agents · 缓存 · 流式输出              | ⭐⭐⭐  |
-|             | 06 LangGraph 入门                                                                                         |                                🚧撰写中                                | Flow · Node · Edge 控制           | ⭐⭐⭐  |
-|             | 07 RAG 基础篇（Embedding & 向量）                                                                              |                                 🚧                                  | 向量化 · 检索匹配                      |  ⭐⭐  |
-|             | 08 RAG 进阶篇（检索 + 生成）                                                                                     |                                 🚧                                  | RAG Pipeline · QA 系统            | ⭐⭐⭐  |
+|             | 06 RAG 基础篇（Embedding & 向量）                                                                              |                                🚧撰写中                                | 向量化 · 检索匹配                      |  ⭐⭐  |
+|             | 07 RAG 进阶篇（检索 + 生成）                                                                                     |                                 🚧                                  | RAG Pipeline · QA 系统            | ⭐⭐⭐  |
+|             | 08 LangGraph 入门                                                                                         |                                 🚧                                  | Flow · Node · Edge 控制           | ⭐⭐⭐  |
 | 🧠 **智能篇**  | 09 MCP 基础                                                                                               |                                 🚧                                  | MCP 协议 · 客户端安装                  |  ⭐⭐  |
 |             | 10 MCP 进阶                                                                                               |                                 🚧                                  | 在线模型接入 · 多轮任务                   | ⭐⭐⭐  |
 |             | 11 MCP 高级                                                                                               |                                 🚧                                  | 多服务组合 · 并发调用                    | ⭐⭐⭐⭐ |
@@ -135,7 +135,7 @@ python "01 Agent 入门 & 环境搭建/Agent-demo.py"
 
 如果有商业/技术交流需求，请联系我:
 
-📬 微信：a19731567148（备注 GitHub）
+📬 微信：a19731567148（备注 Agent）
 
 📖 个人博客：[CSDN 主页](https://blog.csdn.net/2401_87328929)
 
