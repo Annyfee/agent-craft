@@ -86,8 +86,8 @@
 flowchart LR
     A[Prompt 层] --> B[LLM 核心调用]
     B --> C[LangChain 工具链]
-    C --> D[LangGraph 流程控制]
-    D --> E[RAG 检索增强生成]
+    C --> D[RAG 检索增强生成]
+    D --> E[LangGraph 流程控制]
     E --> F[MCP 扩展能力]
     F --> G[多智能体协作与规划]
     G --> H[SDK 封装与部署]
