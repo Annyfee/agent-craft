@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         # 确保使用正确的Python版本格式
-        python-version: [ '3.8', '3.9', '3.10' ]
+        python-version: ['3.9', '3.10','3.11' ]
       # 允许一个版本失败不影响其他版本的测试
       fail-fast: false
 
