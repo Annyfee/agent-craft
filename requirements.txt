@@ -3,3 +3,5 @@ python-dotenv~=1.1.1
 openai~=2.6.0
 requests~=2.32.5
 langchain~=0.3.27
+langchain-huggingface>=0.0.3
+huggingface_hub[hf_xet]>=0.23.0

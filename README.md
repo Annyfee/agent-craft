@@ -2,6 +2,8 @@
 
 > 智能体开发教学库 | A beginner-friendly guide to building AI agents
 
+[![Python CI](https://github.com/Annyfee/agent-craft/actions/workflows/ci.yml/badge.svg)](https://github.com/Annyfee/agent-craft/actions/workflows/ci.yml)
+
 ## 📘 项目简介
 
 **Agent Craft** 是一个系统性开源教学项目，采用 **「博客讲解 + 代码实践」双驱动模式**，带你从零构建完整的 AI Agent 开发能力。
@@ -126,6 +128,20 @@ OPENAI_API_KEY=your_deepseek_api_key_here
 ```bash
 python "01 Agent 入门 & 环境搭建/Agent-demo.py"
 ```
+
+### 4️⃣ 运行测试
+
+项目已集成CI/CD流程，包含基本测试和代码检查。你可以通过以下方式运行测试：
+
+```bash
+# 直接运行测试脚本（推荐，不需要安装额外依赖）
+python tests/test_basic.py
+
+# 或者使用pytest（如果已安装）
+python -m pytest tests/ -v
+```
+
+测试将检查项目目录结构完整性和基本模块导入情况，即使部分依赖未安装，也能完成基本检查。
 
 ---
 
