@@ -35,7 +35,7 @@ jobs:
         # Check if all Python files can be imported
         python -m compileall -f .
         # Run tests with pytest
-        python -m pytest tests/ -v || python tests/test_basic.py
+        python -m pytest tests/ -v
   
   lint:
     runs-on: ubuntu-latest
