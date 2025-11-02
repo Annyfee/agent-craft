@@ -23,24 +23,24 @@
 > 💡 每个模块对应独立目录（含代码、说明与示例），可独立运行与学习。  
 > 🔥 已更新至 05 LangChain 进阶篇，持续更新中！
 
-|     章节      | 模块                                                                                                      |                                 博客                                  | 核心关键词                           |  难度  |
-|:-----------:|:--------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------:|:--------------------------------|:----:|
-| 🏗️ **基础篇** | [01 Agent 入门 & 环境搭建](https://github.com/Annyfee/agent-craft/tree/main/01_agent_introduction)            | [🏠](https://blog.csdn.net/2401_87328929/article/details/153729555) | OpenAI API                      |  ⭐   |
-|             | [02 LLM 基础调用](https://github.com/Annyfee/agent-craft/tree/main/02_llm_fundamentals)                     | [🏠](https://blog.csdn.net/2401_87328929/article/details/153735431) | LLM API 调用 · prompt · 上下文记忆     |  ⭐   |
-|             | [03 Function Calling 与工具调用](https://github.com/Annyfee/agent-craft/tree/main/03_function_calling_tools) | [🏠](https://blog.csdn.net/2401_87328929/article/details/153866573) | Function Call · 工具函数封装          |  ⭐⭐  |
-| ⚙️ **框架篇**  | [04 LangChain 基础篇](https://github.com/Annyfee/agent-craft/tree/main/04_langchain_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/153978186) | LLM · Prompt · Chain · Memory   |  ⭐⭐  |
-|             | [05 LangChain 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/05_langchain_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154064397) | Agents · 缓存 · 流式输出              | ⭐⭐⭐  |
-|             | 06 RAG 基础篇（Embedding & 向量）                                                                              |                                🚧撰写中                                | 向量化 · 检索匹配                      |  ⭐⭐  |
-|             | 07 RAG 进阶篇（检索 + 生成）                                                                                     |                                 🚧                                  | RAG Pipeline · QA 系统            | ⭐⭐⭐  |
-|             | 08 LangGraph 入门                                                                                         |                                 🚧                                  | Flow · Node · Edge 控制           | ⭐⭐⭐  |
-| 🧠 **智能篇**  | 09 MCP 基础                                                                                               |                                 🚧                                  | MCP 协议 · 客户端安装                  |  ⭐⭐  |
-|             | 10 MCP 进阶                                                                                               |                                 🚧                                  | 在线模型接入 · 多轮任务                   | ⭐⭐⭐  |
-|             | 11 MCP 高级                                                                                               |                                 🚧                                  | 多服务组合 · 并发调用                    | ⭐⭐⭐⭐ |
-|             | 12 多步骤任务规划（MCP Task Planning）                                                                           |                                 🚧                                  | Task Planning · CoT             | ⭐⭐⭐  |
-|             | 13 多智能体协作                                                                                               |                                 🚧                                  | Multi-Agent · 通信机制              | ⭐⭐⭐⭐ |
-|             | 14 综合案例实战                                                                                               |                                 🚧                                  | LangChain + RAG + Tool + Memory | ⭐⭐⭐⭐ |
-| 🚀 **工程篇**  | 15 部署与本地化                                                                                               |                                 🚧                                  | Ollama · LM Studio · API代理      | ⭐⭐⭐  |
-|             | 16 Agent SDK 封装                                                                                         |                                 🚧                                  | 模块化封装 · SDK 架构                  | ⭐⭐⭐⭐ |
+|     章节      | 模块                                                                                                      |                                 博客                                  | 核心关键词                                     |  难度  |
+|:-----------:|:--------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------:|:------------------------------------------|:----:|
+| 🏗️ **基础篇** | [01 Agent 入门 & 环境搭建](https://github.com/Annyfee/agent-craft/tree/main/01_agent_introduction)            | [🏠](https://blog.csdn.net/2401_87328929/article/details/153729555) | OpenAI API                                |  ⭐   |
+|             | [02 LLM 基础调用](https://github.com/Annyfee/agent-craft/tree/main/02_llm_fundamentals)                     | [🏠](https://blog.csdn.net/2401_87328929/article/details/153735431) | LLM API 调用 · prompt · 上下文记忆               |  ⭐   |
+|             | [03 Function Calling 与工具调用](https://github.com/Annyfee/agent-craft/tree/main/03_function_calling_tools) | [🏠](https://blog.csdn.net/2401_87328929/article/details/153866573) | Function Call · 工具函数封装                    |  ⭐⭐  |
+| ⚙️ **框架篇**  | [04 LangChain 基础篇](https://github.com/Annyfee/agent-craft/tree/main/04_langchain_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/153978186) | LLM · Prompt · Chain · Memory             |  ⭐⭐  |
+|             | [05 LangChain 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/05_langchain_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154064397) | Agents · 缓存 · 流式输出                        | ⭐⭐⭐  |
+|             | 06 RAG 基础篇（Embedding & 向量）                                                                              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154230067) | RAG概念 · Split · Embedding · FAISS · RAG 链 |  ⭐⭐  |
+|             | 07 RAG 进阶篇（检索 + 生成）                                                                                     |                                 🚧                                  | RAG Pipeline · QA 系统                      | ⭐⭐⭐  |
+|             | 08 LangGraph 入门                                                                                         |                                 🚧                                  | Flow · Node · Edge 控制                     | ⭐⭐⭐  |
+| 🧠 **智能篇**  | 09 MCP 基础                                                                                               |                                 🚧                                  | MCP 协议 · 客户端安装                            |  ⭐⭐  |
+|             | 10 MCP 进阶                                                                                               |                                 🚧                                  | 在线模型接入 · 多轮任务                             | ⭐⭐⭐  |
+|             | 11 MCP 高级                                                                                               |                                 🚧                                  | 多服务组合 · 并发调用                              | ⭐⭐⭐⭐ |
+|             | 12 多步骤任务规划（MCP Task Planning）                                                                           |                                 🚧                                  | Task Planning · CoT                       | ⭐⭐⭐  |
+|             | 13 多智能体协作                                                                                               |                                 🚧                                  | Multi-Agent · 通信机制                        | ⭐⭐⭐⭐ |
+|             | 14 综合案例实战                                                                                               |                                 🚧                                  | LangChain + RAG + Tool + Memory           | ⭐⭐⭐⭐ |
+| 🚀 **工程篇**  | 15 部署与本地化                                                                                               |                                 🚧                                  | Ollama · LM Studio · API代理                | ⭐⭐⭐  |
+|             | 16 Agent SDK 封装                                                                                         |                                 🚧                                  | 模块化封装 · SDK 架构                            | ⭐⭐⭐⭐ |
 
 ---
 
@@ -73,6 +73,11 @@
 
 - **目标**：掌握Langchain Agents的核心机制，构建能调用工具、持续思考、具备记忆的智能体。
 - **内容**：Function Calling｜@tool 工具封装｜ReAct 循环｜Agent 构建｜SQL Agent｜记忆+流式｜开发优化
+
+### ✅ 模块 06 — Rag 基础篇
+
+- **目标**：理解Rag的概念与整个运行流程，并能最终搭建一个可以引用外部知识库获取信息的智能体。
+- **内容**：RAG 概念｜文本加载与分块 (Load & Split)｜向量化 (Embedding)｜向量存储 (FAISS)｜LCEL RAG 链
 
 > 📌 后续模块将陆续开放（LangGraph、RAG、MCP、多智能体等）
 

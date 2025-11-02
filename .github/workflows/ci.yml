@@ -23,12 +23,13 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest
+        # 使用--use-deprecated=legacy-resolver来更好地处理依赖冲突
+        pip install -r requirements.txt --use-deprecated=legacy-resolver
+        pip install pytest faiss-cpu
     
     - name: Run basic checks
       run: |
