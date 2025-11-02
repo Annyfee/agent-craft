@@ -30,7 +30,7 @@
 |             | [03 Function Calling 与工具调用](https://github.com/Annyfee/agent-craft/tree/main/03_function_calling_tools) | [🏠](https://blog.csdn.net/2401_87328929/article/details/153866573) | Function Call · 工具函数封装                    |  ⭐⭐  |
 | ⚙️ **框架篇**  | [04 LangChain 基础篇](https://github.com/Annyfee/agent-craft/tree/main/04_langchain_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/153978186) | LLM · Prompt · Chain · Memory             |  ⭐⭐  |
 |             | [05 LangChain 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/05_langchain_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154064397) | Agents · 缓存 · 流式输出                        | ⭐⭐⭐  |
-|             | 06 RAG 基础篇（Embedding & 向量）                                                                              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154230067) | RAG概念 · Split · Embedding · FAISS · RAG 链 |  ⭐⭐  |
+|             | [06 RAG 基础篇（Embedding & 向量）](https://github.com/Annyfee/agent-craft/tree/main/06_rag_basics)            | [🏠](https://blog.csdn.net/2401_87328929/article/details/154230067) | RAG概念 · Split · Embedding · FAISS · RAG 链 |  ⭐⭐  |
 |             | 07 RAG 进阶篇（检索 + 生成）                                                                                     |                                 🚧                                  | RAG Pipeline · QA 系统                      | ⭐⭐⭐  |
 |             | 08 LangGraph 入门                                                                                         |                                 🚧                                  | Flow · Node · Edge 控制                     | ⭐⭐⭐  |
 | 🧠 **智能篇**  | 09 MCP 基础                                                                                               |                                 🚧                                  | MCP 协议 · 客户端安装                            |  ⭐⭐  |
@@ -46,7 +46,7 @@
 
 ## 🧩 当前学习建议（适用于已完成模块）
 
-目前已开放模块：**01 ~ 04**。  
+目前已开放模块：**01 ~ 06**。  
 建议按顺序学习，每一章都有完整代码示例与注释。
 
 ### ✅ 模块 01 — Agent 入门 & 环境搭建
