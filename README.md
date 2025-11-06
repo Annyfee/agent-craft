@@ -31,8 +31,8 @@
 | ⚙️ **框架篇**  | [04 LangChain 基础篇](https://github.com/Annyfee/agent-craft/tree/main/04_langchain_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/153978186) | LLM · Prompt · Chain · Memory             |  ⭐⭐  |
 |             | [05 LangChain 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/05_langchain_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154064397) | Agents · 缓存 · 流式输出                        | ⭐⭐⭐  |
 |             | [06 RAG 基础篇](https://github.com/Annyfee/agent-craft/tree/main/06_rag_basics)                            | [🏠](https://blog.csdn.net/2401_87328929/article/details/154230067) | RAG概念 · Split · Embedding · FAISS · RAG 链 |  ⭐⭐  |
-|             | 07 RAG 进阶篇（检索 + 生成）                                                                                     |                                🚧撰写中                                | RAG Pipeline · QA 系统                      | ⭐⭐⭐  |
-|             | 08 LangGraph 入门                                                                                         |                                 🚧                                  | Flow · Node · Edge 控制                     | ⭐⭐⭐  |
+|             | [07 RAG 进阶篇]()                                                                                          |                               [🏠]()                                | Chroma · Reranker · RAG工具化 · 集成           | ⭐⭐⭐  |
+|             | 08 LangGraph 入门                                                                                         |                                🚧撰写中                                | Flow · Node · Edge 控制                     | ⭐⭐⭐  |
 | 🧠 **智能篇**  | 09 MCP 基础                                                                                               |                                 🚧                                  | MCP 协议 · 客户端安装                            |  ⭐⭐  |
 |             | 10 MCP 进阶                                                                                               |                                 🚧                                  | 在线模型接入 · 多轮任务                             | ⭐⭐⭐  |
 |             | 11 MCP 高级                                                                                               |                                 🚧                                  | 多服务组合 · 并发调用                              | ⭐⭐⭐⭐ |
@@ -46,7 +46,7 @@
 
 ## 🧩 当前学习建议（适用于已完成模块）
 
-目前已开放模块：**01 ~ 06**。  
+目前已开放模块：**01 ~ 07**。  
 建议按顺序学习，每一章都有完整代码示例与注释。
 
 ### ✅ 模块 01 — Agent 入门 & 环境搭建
@@ -79,7 +79,12 @@
 - **目标**：理解Rag的概念与整个运行流程，并能够搭建一个可以引用外部知识库获取信息的智能体。
 - **内容**：RAG 概念｜文本加载与分块 (Load & Split)｜向量化 (Embedding)｜向量存储 (FAISS)｜LCEL RAG 链
 
-> 📌 后续模块将陆续开放（LangGraph、RAG、MCP、多智能体等）
+### ✅ 模块 07 — Rag 进阶篇
+
+- **目标**：学会进阶的Chroma向量数据库，会Reranker精排序，最终将04到07所学的Langchain六大模块完整集成。
+- **内容**：Chroma 持久化 | Reranker 精排 | RAG 工具化 | Langchain六大模块集成
+
+> 📌 后续模块将陆续开放（LangGraph、MCP、多智能体等）
 
 ---
 

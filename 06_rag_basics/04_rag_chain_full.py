@@ -83,6 +83,7 @@ llm = ChatOpenAI(
 def format_docs(docs):
     return "\n".join(doc.page_content for doc in docs)
 
+
 # 5. 组装 RAG 链条(LCEL)
 rag_chain = (
     {"context":retrieve | format_docs,"question":RunnablePassthrough()}

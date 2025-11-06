@@ -50,6 +50,7 @@ def get_session_history(session_id:str):
     return store[session_id]
 
 
+# 添加记忆功能
 agent_with_memory = RunnableWithMessageHistory(
     runnable=agent_executor,
     get_session_history=get_session_history,
