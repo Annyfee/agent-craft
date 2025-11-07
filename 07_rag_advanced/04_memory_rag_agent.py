@@ -32,6 +32,7 @@ def build_rag_chain(llm_instance):
     if not os.path.exists(Persist_directory):
         raise FileNotFoundError(f'索引目录{Persist_directory}未找到，请先运行 build_index.py')
 
+    # 链接向量数据库
     embedding_model = HuggingFaceEmbeddings(model_name=Embedding_model)
     db = Chroma(
         persist_directory=Persist_directory,
