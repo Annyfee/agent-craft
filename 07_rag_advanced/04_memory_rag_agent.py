@@ -74,7 +74,7 @@ def build_rag_chain(llm_instance):
     return rag_chain
 
 
-
+# 2. 将 RAG链条 组装进Agent里
 def create_agent_with_memory():
     # LLm
     llm = ChatOpenAI(
