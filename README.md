@@ -1,4 +1,4 @@
-# 🤖 Agent Craft —— 从零打造你的第一个 AI Agent
+# 🤖 Agent Craft —— 从零构建全栈AI智能体(应用层实战指南)
 
 > ✅ **系统性开源教学项目**，手把手带你用 Python 构建可运行的 AI Agent，涵盖 Prompt、LLM、LangChain、RAG、LangGraph、MCP 到部署发布全流程。
 
