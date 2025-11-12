@@ -1,6 +1,6 @@
-# 🤖 Agent Craft
+# 🤖 Agent Craft —— 从零打造你的第一个 AI Agent
 
-> 智能体开发教学库 | A beginner-friendly guide to building AI agents
+> ✅ **系统性开源教学项目**，手把手带你用 Python 构建可运行的 AI Agent，涵盖 Prompt、LLM、LangChain、RAG、LangGraph、MCP 到部署发布全流程。
 
 [![Python CI](https://github.com/Annyfee/agent-craft/actions/workflows/ci.yml/badge.svg)](https://github.com/Annyfee/agent-craft/actions/workflows/ci.yml)
 
@@ -161,14 +161,11 @@ python -m pytest tests/ -v
 测试将检查项目目录结构完整性和基本模块导入情况，即使部分依赖未安装，也能完成基本检查。
 
 ---
+## 🤝 参与与交流
 
-## 🤝 参与和交流
+- 📬 提交 Issue / PR：欢迎提出改进建议或贡献代码！
+- 📩 技术交流：微信 a19731567148（备注 Agent）
+- 📚 博客主页：[CSDN 主页](https://blog.csdn.net/2401_87328929)
 
-欢迎提交 **Issue / PR / 改进建议**
-
-如果有商业/技术交流需求，请联系我:
-
-📬 微信：a19731567148（备注 Agent）
-
-📖 个人博客：[CSDN 主页](https://blog.csdn.net/2401_87328929)
+🌟 如果这个项目帮到了你，请给我点个 Star ⭐，让更多人看到它！
 
