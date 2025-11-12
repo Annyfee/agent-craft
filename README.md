@@ -21,7 +21,7 @@
 ## 🧭 模块总览（16 模块）
 
 > 💡 每个模块对应独立目录（含代码、说明与示例），可独立运行与学习。  
-> 🔥 已更新至 07 Rag 进阶篇，持续更新中！
+> 🔥 已更新至 08 LangGraph 基础篇，持续更新中！
 
 |     章节      | 模块                                                                                                      |                                 博客                                  | 核心关键词                                               |  难度   |
 |:-----------:|:--------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------:|:----------------------------------------------------|:-----:|
@@ -32,8 +32,8 @@
 |             | [05 LangChain 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/05_langchain_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154064397) | Agents · 缓存 · 流式输出                                  |  ⭐⭐⭐  |
 |             | [06 RAG 基础篇](https://github.com/Annyfee/agent-craft/tree/main/06_rag_basics)                            | [🏠](https://blog.csdn.net/2401_87328929/article/details/154230067) | RAG概念 · Split · Embedding · FAISS · RAG 链           |  ⭐⭐   |
 |             | [07 RAG 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/07_rag_advanced)                          | [🏠](https://blog.csdn.net/2401_87328929/article/details/154408744) | Chroma · Reranker · RAG工具化 · 集成                     |  ⭐⭐⭐  |
-|             | 08 LangGraph 基础篇                                                                                        |                                🚧撰写中                                | `State` · `Node` · `Conditional Edge` · RAG+反思      |  ⭐⭐⭐  |
-|             | 09 LangGraph 进阶篇                                                                                        |                                 🚧                                  | `Multi-Agent` · `Human-in-the-Loop` · “总控-员工”架构     | ⭐⭐⭐⭐  |
+|             | [08 LangGraph 基础篇]()                                                                                    | [🏠](https://blog.csdn.net/2401_87328929/article/details/154576812) | Langgraph三要素 · LangSmith · ReAct · 提示词安全注入          |  ⭐⭐⭐  |
+|             | 09 LangGraph 进阶篇                                                                                        |                                🚧撰写中                                | `Multi-Agent` · `Human-in-the-Loop` · “总控-员工”架构     | ⭐⭐⭐⭐  |
 | 🧠 **智能篇**  | 10 MCP 基础 (Client)                                                                                      |                                 🚧                                  | `MCP` 协议 · `CherryStudio` · 消费公共 MCP                |  ⭐⭐⭐  |
 |             | 11 MCP 进阶 (Server)                                                                                      |                                 🚧                                  | `Streamable HTTP` · `src layout` · 构建私有 MCP         | ⭐⭐⭐⭐  |
 |             | 12 Swarm & Agents SDK                                                                                   |                                 🚧                                  | `Swarm` · `Handoff` · “航空公司客服”项目                    | ⭐⭐⭐⭐  |
@@ -46,7 +46,7 @@
 
 ## 🧩 当前学习建议（适用于已完成模块）
 
-目前已开放模块：**01 ~ 07**。  
+目前已开放模块：**01 ~ 08**。  
 建议按顺序学习，每一章都有完整代码示例与注释。
 
 ### ✅ 模块 01 — Agent 入门 & 环境搭建
@@ -84,7 +84,12 @@
 - **目标**：学会进阶的Chroma向量数据库，会Reranker精排序，最终将04到07所学的Langchain六大模块完整集成。
 - **内容**：Chroma 持久化 | Reranker 精排 | RAG 工具化 | Langchain六大模块集成
 
-> 📌 后续模块将陆续开放（LangGraph、MCP、多智能体等）
+### ✅ 模块 08 — LangGraph 基础篇
+
+- **目标**：懂得Langgraph的三要素，会使用LangSmith调试当前agent，并能自己写一个简单的Langgraph流程。
+- **内容**：Langgraph核心三要素｜ReAct循环白盒化实现 | LangSmith调试追踪 | 持久化记忆 | 提示词安全注入
+
+> 📌 后续模块将陆续开放（MCP、多智能体、Streamlit等）
 
 ---
 
@@ -129,9 +134,11 @@ cp .env.example .env
 
 ```env
 OPENAI_API_KEY=your_deepseek_api_key_here
+LANGCHAIN_API_KEY=your_langsmith_api_key
 ```
 
-> 💡 **获取API Key**: 访问 [DeepSeek官网](https://platform.deepseek.com/) 注册并获取API Key
+> 💡 **获取API Key**: 访问 [DeepSeek官网](https://platform.deepseek.com/)、[LangSmith官网](https://smith.langchain.com/)
+> 注册并获取API Key
 
 ### 3️⃣ 运行示例
 
