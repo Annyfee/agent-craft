@@ -1,7 +1,6 @@
 from dotenv import load_dotenv
 import os
 
-
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 langchain_api_key = os.getenv("LANGCHAIN_API_KEY")
@@ -42,7 +41,7 @@ def call_model(state:MessagesState):
 
 
 # ReAct Step2-3:Action + Observation
-tool_node = ToolNode(tools)
+tool_node = ToolNode(tools) # 工具节点函数，langgraph已封装
 
 # ReAct Step4:Loop Controller(是否循环)
 def should_continue(state:MessagesState):
@@ -70,7 +69,7 @@ workflow.add_conditional_edges(
     }
 )
 
-workflow.add_edge("tools","agent")
+workflow.add_edge("tools","agent") # 工具调用的结果再返回给agent节点
 
 app = workflow.compile()
 
