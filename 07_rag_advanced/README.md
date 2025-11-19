@@ -1,3 +1,9 @@
+现在问题：
+1. rag代码与博客你已经全部修正完了
+2. rag里的readme你还没修
+3. langgraph也没修
+
+
 # 🧩 模块说明：RAG 进阶 - 从基础到智能 Agent
 
 > 📌 核心知识点：持久化向量库（Chroma）｜精排序（Reranker）｜RAG 工具化｜Agent 集成｜记忆型对话｜六大模块融合
