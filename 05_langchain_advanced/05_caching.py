@@ -1,19 +1,13 @@
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
-
+from config import OPENAI_API_KEY
 import time
 from langchain_openai import ChatOpenAI
-from langchain.globals import set_llm_cache
+from langchain_core.globals import set_llm_cache
 from langchain_community.cache import InMemoryCache
 
 # 配置llm
 llm = ChatOpenAI(
     model="deepseek-chat",
-    api_key=api_key,
+    api_key=OPENAI_API_KEY,
     base_url="https://api.deepseek.com"
 )
 # 设置全局缓存

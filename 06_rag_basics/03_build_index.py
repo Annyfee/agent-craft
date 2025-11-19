@@ -1,10 +1,9 @@
 # 仅负责: 切片 -> 向量化 -> 构建索引 -> 保存到磁盘
 # 运行一次即可，无需每次检索都运行
-
+from embeddings import get_embeddings
 import os
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 # 准备知识库内容
@@ -48,7 +47,7 @@ splits = text_splitter.split_documents(docs) # 运行切分器
 print(f'p1完成，文档已切分成{len(splits)}个片段\n')
 
 # 2. 向量化(Embedding)
-embeddings_model = HuggingFaceEmbeddings(model_name="BAAI/bge-small-zh-v1.5") # 载入向量化模型
+embeddings_model = get_embeddings() # 载入向量化模型
 print(f'p2完成，Embedding模型已准备\n') #
 
 # 3. 存储(Store)
@@ -61,17 +60,3 @@ print(f'p3完成，向量数据库{db}已构建')
 os.remove("knowledge_base.txt")
 
 print('---所有阶段已经完成!---')
-
-
-
-
-
-
-
-
-
-
-
-
-
-

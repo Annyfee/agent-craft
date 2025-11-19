@@ -1,25 +1,21 @@
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
-from langchain_huggingface import HuggingFaceEmbeddings
+from config import OPENAI_API_KEY
+from embeddings import get_embeddings
 from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from langchain.retrievers import ContextualCompressionRetriever
+from langchain_classic.retrievers import ContextualCompressionRetriever
 from langchain_community.cross_encoders import HuggingFaceCrossEncoder
-from langchain.retrievers.document_compressors import CrossEncoderReranker
+from langchain_classic.retrievers.document_compressors import CrossEncoderReranker
 from langchain_core.tools import tool
 
 
 # 全局 LLM (供Agent和Rag共用)
 llm = ChatOpenAI(
     model="deepseek-chat",
-    api_key=api_key,
+    api_key=OPENAI_API_KEY,
     base_url="https://api.deepseek.com"
 )
 
@@ -27,23 +23,26 @@ llm = ChatOpenAI(
 def build_rag_chain(llm_instance):
     print('---正在构建RAG链条...---\n')
 
-    Persist_directory = './chroma_db_war_and_peace_bge_small_en_v1.5'
-    Embedding_model = 'BAAI/bge-small-en-v1.5'
-    Encoder_model = "BAAI/bge-reranker-base"
+    persist_directory = './chroma_db_war_and_peace_bge_small_en_v1.5'
+    embedding_model_name = 'BAAI/bge-small-en-v1.5'
+    encoder_model_name = "BAAI/bge-reranker-base"
 
-    if not os.path.exists(Persist_directory):
-        raise FileNotFoundError(f'索引目录{Persist_directory}未找到，请先运行 build_index.py')
+    if not os.path.exists(persist_directory):
+        raise FileNotFoundError(f'索引目录{persist_directory}未找到，请先运行 build_index.py')
 
-    embeddings_model = HuggingFaceEmbeddings(model_name=Embedding_model)
+    print(f'正在加载/下载 Embedding模型：{embedding_model_name}')
+    embeddings_model = get_embeddings(model_name=embedding_model_name,device='cpu')
     db = Chroma(
-        persist_directory=Persist_directory,
+        persist_directory=persist_directory,
         embedding_function=embeddings_model
     )
 
     # 1. R-检索--强化版
-    base_retriever = db.as_retriever(search_kwargs={"k":5})
-    encoder = HuggingFaceCrossEncoder(model_name=Encoder_model)
-    reranker = CrossEncoderReranker(model=encoder,top_n=2)
+    base_retriever = db.as_retriever(search_kwargs={"k":50})
+
+    print(f'正在加载 Reranker模型:{encoder_model_name}...')
+    encoder = HuggingFaceCrossEncoder(model_name=encoder_model_name)
+    reranker = CrossEncoderReranker(model=encoder,top_n=6)
     compression_retriever=ContextualCompressionRetriever(
         base_retriever=base_retriever,
         base_compressor=reranker
@@ -59,6 +58,7 @@ def build_rag_chain(llm_instance):
     [上下文]: {context}
     [问题]: {question}
     """
+
     prompt = ChatPromptTemplate.from_messages([
         ('system',sys_prompt),
         ('human','{question}')
@@ -106,31 +106,3 @@ if __name__ == '__main__':
     res = search_war_and_peace.invoke(question)
     print(f'问题:{question}')
     print(f'回答:{res}')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

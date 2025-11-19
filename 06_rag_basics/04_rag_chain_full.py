@@ -1,12 +1,8 @@
+from embeddings import get_embeddings
+from config import OPENAI_API_KEY
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
@@ -43,8 +39,8 @@ loader = TextLoader('knowledge_base.txt',encoding='utf8')
 docs = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=250,chunk_overlap=40)
 splits = text_splitter.split_documents(docs)
-embedding_model = HuggingFaceEmbeddings(model_name="BAAI/bge-small-zh-v1.5")
-db = FAISS.from_documents(splits,embedding_model)
+embedding_model = get_embeddings("bge-small-zh-v1.5")
+db = FAISS.from_documents(splits,embedding_model) # 在内存中构建向量索引，但不持久化到本地文件
 print('---模块A(Indexing)完成---\n')
 
 
@@ -75,7 +71,7 @@ prompt = ChatPromptTemplate.from_messages([
 # 3. G (Generation - 生成)
 llm = ChatOpenAI(
     model="deepseek-chat",
-    api_key=api_key,
+    api_key=OPENAI_API_KEY,
     base_url="https://api.deepseek.com"
 )
 
@@ -111,15 +107,3 @@ print(f'回答:{response}\n')
 
 # 清理临时文件
 os.remove("knowledge_base.txt")
-
-
-
-
-
-
-
-
-
-
-
-

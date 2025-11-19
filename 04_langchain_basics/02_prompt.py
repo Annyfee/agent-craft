@@ -1,10 +1,3 @@
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
-
 from langchain_core.prompts import ChatPromptTemplate
 
 # 定义提示词模板(推荐写法)

@@ -1,13 +1,4 @@
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-def create_client():
-    api_key = os.getenv("OPENAI_API_KEY")
-    return api_key
-
-
+from config import OPENAI_API_KEY
 from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
@@ -44,7 +35,7 @@ def main():
     # 此处集中配置LLM
     llm = ChatOpenAI(
         model="deepseek-chat",
-        api_key=create_client(),
+        api_key=OPENAI_API_KEY,
         base_url="https://api.deepseek.com"
     )
     prompt = """你是‘小智’，一位专业、耐心且记忆力出色的 AI 助手。

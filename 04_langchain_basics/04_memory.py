@@ -1,18 +1,9 @@
-import os
-from dotenv import load_dotenv
-
-
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
-
-
 from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables import RunnableWithMessageHistory
-
+from config import OPENAI_API_KEY
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", "你非常可爱，说话末尾会带个喵"),
@@ -21,7 +12,7 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 llm = ChatOpenAI(
     model="deepseek-chat",
-    api_key=api_key,
+    api_key=OPENAI_API_KEY,
     base_url="https://api.deepseek.com"
 )
 parser = StrOutputParser()
@@ -58,32 +49,3 @@ while 1:
         config={"configurable":{"session_id":session_id}}
     )
     print(f'AI:{response}')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,12 +1,8 @@
-import os # 导入环境变量
-from dotenv import load_dotenv
+from config import OPENAI_API_KEY
 from openai import OpenAI
 
-load_dotenv()
-
 def create_client():
-    api_key = os.getenv("OPENAI_API_KEY")
-    return OpenAI(api_key=api_key,base_url="https://api.deepseek.com")
+    return OpenAI(api_key=OPENAI_API_KEY,base_url="https://api.deepseek.com")
 
 def chat_loop(agent_client):
     messages = [

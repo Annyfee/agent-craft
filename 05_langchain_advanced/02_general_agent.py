@@ -1,20 +1,15 @@
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
-
-import os
+from config import OPENAI_API_KEY
 from langchain_openai import ChatOpenAI
-from langchain.agents import AgentExecutor, create_tool_calling_agent
+# 在LangChain 1.0+版本中，以下俩组件移到了langchain-classic包中
+from langchain_classic.agents import AgentExecutor
+from langchain_classic.agents import create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import tool # 导入 @tool
 
 # 配置LLM
 llm = ChatOpenAI(
     model="deepseek-chat",
-    api_key=api_key,
+    api_key=OPENAI_API_KEY,
     base_url="https://api.deepseek.com"
 )
 

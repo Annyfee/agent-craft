@@ -1,45 +1,41 @@
-# pip install --upgrade langchain-openai
-# pip install --upgrade langchain-huggingface langchain-core langchain-community
-# pip install --upgrade langchain-core langchain-community
-import os
-from dotenv import load_dotenv
-from langchain_core.runnables import RunnablePassthrough
-
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
-import os
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_openai import ChatOpenAI
+from embeddings import get_embeddings
+from config import OPENAI_API_KEY
+import os
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
 
 
 Persist_directory = './chroma_db_war_and_peace_bge_small_en_v1.5'
-Embedding_model = 'BAAI/bge-small-en-v1.5'
+model_name_str = 'BAAI/bge-small-en-v1.5'
 
 if not os.path.exists(Persist_directory):
     print(f"错误: 知识库文件 {Persist_directory} 未找到。")
-    print("请先运行'build_index.py'生成向量数据库，再运行该文件")
+    print("请先运行'00_build_index.py'生成向量数据库，再运行该文件")
     exit()
 
 print('---加载本地向量数据库---')
 
 # 模块A:链接本地Chroma向量数据库
 # 1. 加载 Embedding 模型
-embedding_model = HuggingFaceEmbeddings(model_name=Embedding_model)
+print(f'正在加载/下载模型{model_name_str}...')
+embeddings_model = get_embeddings(
+    model_name=model_name_str,
+    device='cpu'
+)
 
 # 2. 从本地目录加载Chroma DB
 db = Chroma(
     persist_directory=Persist_directory,
-    embedding_function=embedding_model
+    embedding_function=embeddings_model
 )
 print(f'Chroma数据库已从本地加载(共{db._collection.count()}条)\n')
 
 # 模块B:R-A-G Flow
 # 1. R-检索
-retriever = db.as_retriever(search_kwargs={"k": 3})  # 召回3条相关数据
+retriever = db.as_retriever(search_kwargs={"k": 5})  # 召回5条相关数据
 
 # 2. A-增强
 sys_prompt = """
@@ -58,7 +54,7 @@ prompt = ChatPromptTemplate.from_messages([
 # 3. G-生成
 llm = ChatOpenAI(
     model="deepseek-chat",
-    api_key=api_key,
+    api_key=OPENAI_API_KEY,
     base_url="https://api.deepseek.com"
 )
 
@@ -80,5 +76,3 @@ question = '莫斯科大火发生在小说的哪一部分？有哪些角色亲�
 response = rag_chain.invoke(question)
 print(f'提问:{question}')
 print(f'回答:{response}')
-
-

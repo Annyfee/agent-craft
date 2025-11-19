@@ -1,21 +1,17 @@
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
-from langchain_huggingface import HuggingFaceEmbeddings
+from config import OPENAI_API_KEY
+from embeddings import get_embeddings
 from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from langchain.retrievers import ContextualCompressionRetriever
+from langchain_classic.retrievers import ContextualCompressionRetriever
 from langchain_community.cross_encoders import HuggingFaceCrossEncoder
-from langchain.retrievers.document_compressors import CrossEncoderReranker
+from langchain_classic.retrievers.document_compressors import CrossEncoderReranker
 from langchain_core.tools import tool
-
-from langchain.agents import AgentExecutor, create_tool_calling_agent
+from langchain_classic.agents import AgentExecutor
+from langchain_classic.agents import create_tool_calling_agent
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables import RunnableWithMessageHistory
 
@@ -25,23 +21,25 @@ from langchain_core.runnables import RunnableWithMessageHistory
 def build_rag_chain(llm_instance):
     print('---正在构建RAG链条---')
 
-    Persist_directory = './chroma_db_war_and_peace_bge_small_en_v1.5'
-    Embedding_model = 'BAAI/bge-small-en-v1.5'
-    Encoder_model = "BAAI/bge-reranker-base"
+    persist_directory = './chroma_db_war_and_peace_bge_small_en_v1.5'
+    embedding_model_name = 'BAAI/bge-small-en-v1.5'
+    encoder_model_name = "BAAI/bge-reranker-base"
 
-    if not os.path.exists(Persist_directory):
-        raise FileNotFoundError(f'索引目录{Persist_directory}未找到，请先运行 build_index.py')
+    if not os.path.exists(persist_directory):
+        raise FileNotFoundError(f'索引目录{persist_directory}未找到，请先运行 build_index.py')
 
     # 链接向量数据库
-    embedding_model = HuggingFaceEmbeddings(model_name=Embedding_model)
+    print(f'正在加载/下载 Embedding模型：{embedding_model_name}')
+    embeddings_model = get_embeddings(model_name=embedding_model_name,device='cpu')
     db = Chroma(
-        persist_directory=Persist_directory,
-        embedding_function=embedding_model
+        persist_directory=persist_directory,
+        embedding_function=embeddings_model
     )
     # R
-    base_retriever = db.as_retriever(search_kwargs={'k':5})
-    encoder = HuggingFaceCrossEncoder(model_name=Encoder_model)
-    reranker = CrossEncoderReranker(model=encoder,top_n=2)
+    print(f'正在加载 Reranker模型:{encoder_model_name}...')
+    base_retriever = db.as_retriever(search_kwargs={'k':50})
+    encoder = HuggingFaceCrossEncoder(model_name=encoder_model_name)
+    reranker = CrossEncoderReranker(model=encoder,top_n=6)
     compression_retriever = ContextualCompressionRetriever(
         base_retriever=base_retriever,
         base_compressor=reranker
@@ -80,7 +78,7 @@ def create_agent_with_memory():
     # LLm
     llm = ChatOpenAI(
         model="deepseek-chat",
-        api_key=api_key,
+        api_key=OPENAI_API_KEY,
         base_url="https://api.deepseek.com"
     )
     # Prompt
