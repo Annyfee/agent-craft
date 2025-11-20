@@ -15,23 +15,23 @@ RAG 概念｜文本加载与分块 (Load & Split)｜向量化 (Embedding)｜向�
 
 ---
 
-### 2. `02_embedding.py`（文本向量化）
-演示如何加载本地 Embedding 模型，并将任意文本（知识卡片）转换为“语义向量”。
+### 2. 文本向量化功能
+项目使用根目录下的 `embeddings.py` 模块提供文本向量化功能，该模块封装了 `HuggingFaceEmbeddings`，支持自动下载和加载本地 Embedding 模型。
 
 ✅ **掌握点**：
-- 使用 `HuggingFaceEmbeddings` 加载开源本地模型（如 `BAAI/bge-small-zh-v1.5`）。
-- 理解 Embedding（向量化）是 RAG 的“语义标签”，用于实现“语义搜索”。
-- 如何调用 `embed_query` 将文本转换为向量（一串数字）。
+- 通过 `get_embeddings()` 函数获取向量化模型，默认使用 `BAAI/bge-small-zh-v1.5`。
+- 函数会自动下载模型到本地 `models` 目录，之后可离线使用。
+- 理解 Embedding（向量化）是 RAG 的"语义标签"，用于实现"语义搜索"。
 
 ---
 
-### 3. `03_build_index.py`（构建并存储索引）
-整合“加载”、“分块”和“向量化”三个步骤，构建 FAISS 向量索引库，并将其**持久化**保存到本地磁盘。
+### 3. `03_build_index.py`（向量存储与索引构建）
+使用 FAISS 向量索引库将向量化后的文本片段构建为可检索的向量数据库，并持久化到本地。
 
 ✅ **掌握点**：
-- 什么是 FAISS（轻量级、高性能的向量索引库）。
-- 如何使用 `FAISS.from_documents` 一键完成“批量向量化+构建索引”。
-- 如何使用 `db.save_local` 将索引保存到磁盘，实现**“离线索引”**。
+- 使用 `FAISS.from_documents` 构建向量索引库。
+- 通过 `save_local` 方法将向量索引持久化到本地文件系统（保存为"faiss_index"目录）。
+- 实现文本的完整处理流程：加载 -> 分割 -> 向量化 -> 索引构建 -> 持久化。
 
 ---
 
@@ -48,4 +48,4 @@ RAG 概念｜文本加载与分块 (Load & Split)｜向量化 (Embedding)｜向�
 ---
 
 💡 **建议**：
-跑通所有示例后，尝试用你自己的 `.txt` 文件替换 `knowledge_base.txt`，并调整 `chunk_size` 参数，观察分块结果和 RAG 问答效果的变化。
+跑通所有示例后，尝试用你自己的 `.txt` 文件替换项目中的 `knowledge_base.txt`，并调整 `chunk_size` 参数，观察分块结果和 RAG 问答效果的变化。

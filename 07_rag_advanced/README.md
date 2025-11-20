@@ -15,13 +15,13 @@
 
 ---
 
-### 2. build_index.py （构建 Chroma 向量数据库）
+### 2. `00_build_index.py` （构建 Chroma 向量数据库）
 
 将 `war_and_peace.txt` 加载、分块、向量化，并存入 Chroma 持久化向量数据库。
 
 - ✅ 掌握点：
   - 使用 RecursiveCharacterTextSplitter 分割长文本（chunk_size=500, overlap=75）。
-  - 调用 HuggingFaceEmbeddings（模型：BAAI/bge-small-en-v1.5）生成语义向量。
+  - 通过根目录 `embeddings.py` 模块的 `get_embeddings()` 函数获取向量化模型（默认使用 BAAI/bge-small-en-v1.5）。
   - 通过 Chroma(persist_directory=...) 创建可持久化、支持增删改的向量库。
   - 自动分批插入（每批 ≤5000 条），规避 Chroma 单次写入上限限制。
 
@@ -38,8 +38,9 @@
 加载已持久化的 Chroma 向量数据库，用于后续检索。
 
 - ✅ 掌握点：
+  - 通过根目录 `embeddings.py` 模块的 `get_embeddings()` 函数加载向量化模型。
   - 使用 `Chroma(persist_directory="...")` 从磁盘加载已保存的向量库。
-  - 无需重新向量化，实现“离线索引”快速启动。
+  - 无需重新向量化，实现"离线索引"快速启动。
   - 获取 `db.as_retriever()` 作为后续 RAG 流程的输入。
 
 - 依赖前提：
@@ -52,9 +53,11 @@
 在召回结果上应用 Reranker 模型，提升上下文相关性。
 
 - ✅ 掌握点：
+  - 通过根目录 `embeddings.py` 模块的 `get_embeddings()` 函数加载向量化模型。
   - 使用 `BAAI/bge-reranker-base` Cross-Encoder 对检索结果进行重排序。
-  - 通过 `ContextualCompressionRetriever` 封装为统一检索器。
-  - 仅保留 Top-2 最相关文档，过滤语义噪声。
+  - 通过 `ContextualCompressionRetriever` 和 `CrossEncoderReranker` 实现检索增强。
+  - 理解`k`与`top_n`的作用
+  - 保留 Top-6 最相关文档，过滤语义噪声。
 
 - 依赖前提：
   - 必须存在 `chroma_db_war_and_peace_bge_small_en_v1.5` 目录。
@@ -66,6 +69,7 @@
 将 RAG 链封装为 LangChain `@tool`，供 Agent 调用。
 
 - ✅ 掌握点：
+  - 通过根目录 `embeddings.py` 模块的 `get_embeddings()` 函数加载向量化模型。
   - 在启动时一次性构建 RAG 链（避免每次调用重复加载模型/数据库）。
   - 使用 `@tool` 装饰器注册 `search_war_and_peace(query)` 函数。
   - 支持与其他工具（如 `get_weather`）并列使用。
@@ -80,6 +84,7 @@
 首次融合 LangChain 六大核心模块，构建带记忆、能自主决策的智能体。
 
 - ✅ 掌握点：
+  - 通过根目录 `embeddings.py` 模块的 `get_embeddings()` 函数加载向量化模型。
   - LLM：ChatOpenAI 作为推理引擎。
   - Prompt：含 MessagesPlaceholder("history") 的系统提示。
   - Chain：LCEL 构建的 RAG 链 + AgentExecutor。
