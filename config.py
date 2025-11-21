@@ -1,6 +1,5 @@
 import os
 from dotenv import load_dotenv
-from pathlib import Path
 
 # 1. 加载.env文件
 load_dotenv()
