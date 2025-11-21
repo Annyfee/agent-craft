@@ -19,6 +19,8 @@ LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
 
 if not OPENAI_API_KEY:
     raise ValueError("× 请在.env中设置OPENAI_API_KEY")
+if not LANGCHAIN_API_KEY:
+    raise ValueError("× 请在.env中设置LANGCHAIN_API_KEY")
 
 
 

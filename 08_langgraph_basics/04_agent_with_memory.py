@@ -1,11 +1,6 @@
-from dotenv import load_dotenv
 import os
-
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-langchain_api_key = os.getenv("LANGCHAIN_API_KEY")
-
-from langchain.schema import HumanMessage
+from config import OPENAI_API_KEY,LANGCHAIN_API_KEY
+from langchain_core.messages import HumanMessage
 from langchain.tools import tool
 from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, MessagesState, END,START
@@ -15,12 +10,12 @@ from langgraph.checkpoint.memory import MemorySaver
 
 os.environ["LANGCHAIN_TRACING_V2"] = "true" # 总开关，决定启用追踪功能
 os.environ["LANGCHAIN_PROJECT"] = "demo02" # 自定义项目名
-os.environ["LANGCHAIN_API_KEY"] = langchain_api_key
+os.environ["LANGCHAIN_API_KEY"] = LANGCHAIN_API_KEY
 
 # LLM配置
 llm = ChatOpenAI(
     model="deepseek-chat",
-    api_key=api_key,
+    api_key=OPENAI_API_KEY,
     base_url="https://api.deepseek.com"
 )
 

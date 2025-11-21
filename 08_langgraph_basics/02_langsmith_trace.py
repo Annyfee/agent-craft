@@ -1,19 +1,11 @@
-# pip install --pre -U langchain langchain-openai
-from dotenv import load_dotenv
-import os
-
-
-load_dotenv()
-langchain_api_key = os.getenv("LANGCHAIN_API_KEY")
-
-
+from config import OPENAI_API_KEY,LANGCHAIN_API_KEY
 from typing import TypedDict
 from langgraph.graph import StateGraph,END,START
-
+import os
 
 os.environ["LANGCHAIN_TRACING_V2"] = "true" # 总开关，决定启用追踪功能
 os.environ["LANGCHAIN_PROJECT"] = "my_demo" # 自定义项目名
-os.environ["LANGCHAIN_API_KEY"] = langchain_api_key
+os.environ["LANGCHAIN_API_KEY"] = LANGCHAIN_API_KEY
 
 
 # 1. 定义State(状态) -- 白板上只有一个字段"count"
