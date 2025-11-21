@@ -1,4 +1,4 @@
-from config import OPENAI_API_KEY,LANGCHAIN_API_KEY
+from config import LANGCHAIN_API_KEY
 from typing import TypedDict
 from langgraph.graph import StateGraph,END,START
 import os
