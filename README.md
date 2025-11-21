@@ -121,6 +121,8 @@ flowchart LR
 
 ### 1️⃣ 环境准备
 
+> 💡 **Python 版本要求**: 项目支持 Python 3.10、3.11 和 3.12，推荐使用这些版本。
+
 ```bash
 # 克隆项目
 git clone https://github.com/Annyfee/agent-craft.git
