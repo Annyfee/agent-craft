@@ -41,7 +41,7 @@ tool_node = ToolNode(tools) # 工具节点函数，langgraph已封装
 # ReAct Step4:Loop Controller(是否循环)
 def should_continue(state:MessagesState):
     last_msg = state["messages"][-1]
-    if hasattr(last_msg,"tool_calls") and len(last_msg.tool_calls) > 0:
+    if hasattr(last_msg,"tool_calls") and last_msg.tool_calls:
         return "tools" # 有工具调用 -> 执行工具
     return END         # 无工具调用 -> 返回答案
 
