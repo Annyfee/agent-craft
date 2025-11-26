@@ -1,5 +1,3 @@
-# 目前：已经测试到05_文件夹，代码测试完毕能跑通，但新旧写法尚未确定，明天要改写法+改博客
-
 from config import OPENAI_API_KEY
 from langchain_openai import ChatOpenAI
 from langchain_classic.agents import AgentExecutor
