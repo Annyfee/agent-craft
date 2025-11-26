@@ -8,18 +8,3 @@ prompt = ChatPromptTemplate.from_messages([
 # 格式化输出
 formatted_prompt = prompt.invoke({"input":"你好喵"})
 print(formatted_prompt)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -3,7 +3,7 @@ from config import OPENAI_API_KEY,LANGCHAIN_API_KEY
 from langchain_openai import ChatOpenAI
 from langchain.tools import tool
 from langchain_core.messages import HumanMessage, SystemMessage
-from langgraph.graph import StateGraph, MessagesState, START, END
+from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import ToolNode
 from typing import TypedDict # 定义数据类型
 from typing import Annotated # 注释说明细节
