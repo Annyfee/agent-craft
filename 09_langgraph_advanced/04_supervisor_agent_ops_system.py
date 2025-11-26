@@ -40,7 +40,7 @@ def grep_system_logs(state:SSHState):
     """连接成功后读取日志"""
     if state["logs"] == "CONNECTED":
         # 打印查到的结果
-        return {'logs':f'SUCCESS: Retrieved logs from {state['target_ip']}:[ERROR: OutOfMemory at line 4032]'}
+        return {'logs':f'SUCCESS: Retrieved logs from {state["target_ip"]}:[ERROR: OutOfMemory at line 4032]'}
     return {'logs':state['logs']} # 保持错误状态
 
 def ssh_routing(state:SSHState):
