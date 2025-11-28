@@ -3,7 +3,7 @@
 from pathlib import Path
 from langchain_huggingface import HuggingFaceEmbeddings
 
-# 获取embeddings模型 - 首次调用时自动下载
+# 获取embeddings模型 -- 首次调用时自动下载
 def get_embeddings(model_name="BAAI/bge-small-zh-v1.5",device="cpu",**kwargs):
     # 支持更换其他向量化模型
     local_dir = Path("models")/model_name.replace("/", "_")
