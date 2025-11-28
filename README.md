@@ -129,12 +129,15 @@ flowchart LR
 > 💡 **Python 版本要求**: 项目支持 Python 3.10、3.11 和 3.12，推荐使用这些版本。
 
 ```bash
-# 克隆项目
+# 1. 克隆项目
 git clone https://github.com/Annyfee/agent-craft.git
 cd agent-craft
 
-# 安装依赖
+# 2. 安装依赖
 pip install -r requirements.txt
+
+# 3. 以开发者模式安装项目（重要!）
+pip install -e .
 ```
 
 ### 2️⃣ API Key 配置
@@ -156,22 +159,12 @@ LANGCHAIN_API_KEY=your_langsmith_api_key
 
 ### 3️⃣ 运行示例
 
+一切就绪！运行第一个 Agent 示例：
+
 ```bash
-python "01 Agent 入门 & 环境搭建/Agent-demo.py"
+python "m01_agent_introduction/Agent-demo.py"
 ```
 
-### 4️⃣ 运行测试
-
-项目已集成CI/CD流程，包含基本测试和代码检查。测试文件已移除，CI/CD流程会自动验证代码质量。
-
-### 5️⃣ 配置文件说明
-
-项目使用 `config.py` 文件统一管理配置信息，主要功能包括：
-- 从 `.env` 文件加载环境变量
-- 解决 UUID v7 警告问题
-- 验证必要的 API 密钥配置（`OPENAI_API_KEY` 和 `LANGCHAIN_API_KEY`）
-
-使用时，请确保在 `.env` 文件中正确配置所需的 API 密钥。
 
 ---
 ## 🤝 参与与交流
