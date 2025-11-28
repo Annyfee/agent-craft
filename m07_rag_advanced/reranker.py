@@ -15,7 +15,7 @@ model_name_str = 'BAAI/bge-small-en-v1.5'
 
 if not os.path.exists(Persist_directory):
     print(f"错误: 知识库文件 {Persist_directory} 未找到。")
-    print("请先运行'00_build_index.py'生成向量数据库，再运行该文件")
+    print("请先运行'build_index.py'生成向量数据库，再运行该文件")
     exit()
 
 print('---加载本地向量数据库---\n')

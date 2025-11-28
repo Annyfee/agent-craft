@@ -37,6 +37,6 @@ print("最终状态:",result) # 输出{'count':4}
 
 
 # 保存可视化架构图
-with open('01_workflow.png', 'wb') as f:
+with open('workflow.png', 'wb') as f:
     f.write(app.get_graph().draw_mermaid_png())
-print("图表已保存为 01_workflow.png")
+print("图表已保存为 workflow.png")
