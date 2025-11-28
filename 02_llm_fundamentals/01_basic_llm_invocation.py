@@ -11,7 +11,7 @@ response = client.chat.completions.create(
         {"role": "system", "content": "You are a helpful assistant"}, # 提示词角色
         {"role": "user", "content": "Hello"}, # 用户输入的对话
     ],
-    stream=False # 非流式输出，只会等语句全部生成才返回
+    stream=False # 非流式输出, 只会等语句全部生成才返回
 )
 
 print(response.choices[0].message.content)

@@ -6,7 +6,7 @@ from langchain_openai import ChatOpenAI
 llm = ChatOpenAI(
     model="deepseek-chat",
     api_key=OPENAI_API_KEY,
-    # 注：在.env里把OPENAI_API_KEY改成你自己的api-key即可
+    # 注:在.env里把OPENAI_API_KEY改成你自己的api-key即可
     base_url="https://api.deepseek.com"
 )
 

@@ -11,6 +11,6 @@ def get_user_name(user):
     return f'用户名字是:{user}'
 
 
-# 封装好我们要用的工具
+# 封装好要用的工具
 tools = [get_weather,get_user_name]
 print('工具箱已封装完毕!')

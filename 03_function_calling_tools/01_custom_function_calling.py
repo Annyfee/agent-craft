@@ -76,7 +76,7 @@ def chat_loop(agent_client, tools):
         print('已调用工具...')
         print(f'回答:{final_res.choices[0].message.content}')
     else:
-        # 模型没有要调用工具，直接返回
+        # 模型没有要调用工具, 直接返回
         print('未调用工具...')
         print(f'回答:{response.choices[0].message.content}')
 
