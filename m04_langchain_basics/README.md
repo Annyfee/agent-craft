@@ -5,7 +5,7 @@ LLM 调用｜Prompt 设计｜Chain 构建｜Memory 记忆｜实战练习
 
 ---
 
-### 1. `01_models.py`（模型调用）  
+### 1. `models.py`（模型调用）  
 封装 LLM 实例，实现标准调用流程。  
 
 ✅ 掌握点：  
@@ -14,7 +14,7 @@ LLM 调用｜Prompt 设计｜Chain 构建｜Memory 记忆｜实战练习
 
 ---
 
-### 2. `02_prompt.py`（提示词构建）  
+### 2. `prompt.py`（提示词构建）  
 使用 `ChatPromptTemplate` 构建可复用的 Prompt 模板。  
 
 ✅ 掌握点：  
@@ -24,7 +24,7 @@ LLM 调用｜Prompt 设计｜Chain 构建｜Memory 记忆｜实战练习
 
 ---
 
-### 3. `03_chain.py`（链式调用）  
+### 3. `chain.py`（链式调用）  
 将 Prompt + LLM + Parser 组合成 Chain。  
 
 ✅ 掌握点：  
@@ -34,7 +34,7 @@ LLM 调用｜Prompt 设计｜Chain 构建｜Memory 记忆｜实战练习
 
 ---
 
-### 4. `04_memory.py`（记忆功能）  
+### 4. `memory.py`（记忆功能）  
 添加会话记忆，实现多轮对话。  
 
 ✅ 掌握点：  
@@ -44,7 +44,7 @@ LLM 调用｜Prompt 设计｜Chain 构建｜Memory 记忆｜实战练习
 
 ---
 
-### 5. `05_practice.py`（综合实践）  
+### 5. `practice.py`（综合实践）  
 整合所有组件，搭建一个带记忆的 AI 对话机器人。  
 
 ✅ 掌握点：  

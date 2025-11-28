@@ -5,7 +5,7 @@ RAG 概念｜文本加载与分块 (Load & Split)｜向量化 (Embedding)｜向�
 
 ---
 
-### 1. `01_load_and_split.py`（文本加载与分块）
+### 1. `load_and_split.py`（文本加载与分块）
 加载本地 `.txt` 文档，并使用 `RecursiveCharacterTextSplitter` 将其智能分割成“知识卡片”。
 
 ✅ **掌握点**：
@@ -25,7 +25,7 @@ RAG 概念｜文本加载与分块 (Load & Split)｜向量化 (Embedding)｜向�
 
 ---
 
-### 3. `03_build_index.py`（向量存储与索引构建）
+### 3. `build_index.py`（向量存储与索引构建）
 使用 FAISS 向量索引库将向量化后的文本片段构建为可检索的向量数据库，并持久化到本地。
 
 ✅ **掌握点**：
@@ -35,7 +35,7 @@ RAG 概念｜文本加载与分块 (Load & Split)｜向量化 (Embedding)｜向�
 
 ---
 
-### 4. `04_rag_chain_full.py`（LCEL 完整 RAG 链）
+### 4. `rag_chain_full.py`（LCEL 完整 RAG 链）
 使用 LCEL（LangChain 表达式语言）“手动组装”一个完整的 RAG 流程，实现“检索-增强-生成”的闭环。
 
 ✅ **掌握点**：

@@ -4,7 +4,7 @@
 
 ---
 
-### 1. war_and_peace.txt （知识库源文件）
+### 1. `war_and_peace.txt` （知识库源文件）
 
 托尔斯泰经典小说《战争与和平》的纯文本版本（约3.2MB），作为本篇 RAG 系统的私有知识库。
 
@@ -15,7 +15,7 @@
 
 ---
 
-### 2. `00_build_index.py` （构建 Chroma 向量数据库）
+### 2. `build_index.py` （构建 Chroma 向量数据库）
 
 将 `war_and_peace.txt` 加载、分块、向量化，并存入 Chroma 持久化向量数据库。
 
@@ -33,7 +33,7 @@
 
 ---
 
-### 3. `01_load_from_chroma.py` （从 Chroma 加载向量库）
+### 3. `load_from_chroma.py` （从 Chroma 加载向量库）
 
 加载已持久化的 Chroma 向量数据库，用于后续检索。
 
@@ -48,7 +48,7 @@
 
 ---
 
-### 4. `02_reranker.py` （引入精排序器）
+### 4. `reranker.py` （引入精排序器）
 
 在召回结果上应用 Reranker 模型，提升上下文相关性。
 
@@ -64,7 +64,7 @@
 
 ---
 
-### 5. `03_rag_as_tool.py` （RAG 工具化封装）
+### 5. `rag_as_tool.py` （RAG 工具化封装）
 
 将 RAG 链封装为 LangChain `@tool`，供 Agent 调用。
 
@@ -79,7 +79,7 @@
 
 ---
 
-### 6. `04_memory_rag_agent.py` （终极集成 Agent）
+### 6. `memory_rag_agent.py` （终极集成 Agent）
 
 首次融合 LangChain 六大核心模块，构建带记忆、能自主决策的智能体。
 
@@ -112,4 +112,4 @@
 
 ### 💡 **建议**：
 
-直接运行 04_memory_rag_agent.py 体验完整 Agent 能力；若想自定义知识库，可替换 war_and_peace.txt 并重新运行 build_index.py（记得先删除旧数据库目录）。
+直接运行 `memory_rag_agent.py` 体验完整 Agent 能力；若想自定义知识库，可替换 `war_and_peace.txt` 并重新运行 build_index.py（记得先删除旧数据库目录）。

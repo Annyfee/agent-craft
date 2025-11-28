@@ -5,7 +5,7 @@ LLM 调用｜Prompt 编写与设计｜多轮对话记忆｜独立搭建智能体
 
 ---
 
-### 1. `01_basic_llm_invocation`（LLM 模型调用）  
+### 1. `basic_llm_invocation`（LLM 模型调用）  
 使用 DeepSeek 官方推荐的调用方式，  
 这是后续所有 API 调用的通用结构，可直接复用。  
 
@@ -16,7 +16,7 @@ LLM 调用｜Prompt 编写与设计｜多轮对话记忆｜独立搭建智能体
 
 ---
 
-### 2. `02_conversational_agent`（多轮问答 Agent）  
+### 2. `conversational_agent`（多轮问答 Agent）  
 整合了 LLM + Prompt + Memory，实现有记忆的对话。  
 
 🔧 使用提示：  

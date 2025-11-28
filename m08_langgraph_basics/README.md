@@ -4,7 +4,7 @@
 
 ---
 
-### 1. `01_state_node_edge.py` （LangGraph 最小状态机）
+### 1. `state_node_edge.py` （LangGraph 最小状态机）
 
 演示 LangGraph 最基础的三要素：State（状态）、Node（节点）、Edge（边）。
 
@@ -16,15 +16,15 @@
 
 - 输出：
   - 控制台打印状态变化过程。
-  - 生成 `01_workflow.png` 流程图。
+  - 生成 `workflow.png` 流程图。
 
 > 💡 此脚本**不涉及 LLM 或对话**，仅用于理解 LangGraph 底层机制。
 
 ---
 
-### 2. `01_workflow.png` （状态机流程图）
+### 2. `workflow.png` （状态机流程图）
 
-由 `01_state_node_edge.py` 自动生成的 Mermaid 可视化图。
+由 `state_node_edge.py` 自动生成的 Mermaid 可视化图。
 
 - 内容：
   - 展示 `START → A → B → END` 的线性执行流。
@@ -35,9 +35,9 @@
 
 ---
 
-### 3. `02_langsmith_trace.py` （状态机 + LangSmith 追踪）
+### 3. `langsmith_trace.py` （状态机 + LangSmith 追踪）
 
-在 `01` 的基础上启用 LangSmith，实现执行过程可视化追踪。
+在 `1.` 的基础上启用 LangSmith，实现执行过程可视化追踪。
 
 - ✅ 掌握点：
   - 设置环境变量：`LANGCHAIN_TRACING_V2=true`、`LANGCHAIN_PROJECT="my_demo"`。
@@ -50,7 +50,7 @@
 
 ---
 
-### 4. `03_conditional_router.py` （首个 ReAct Agent：无记忆）
+### 4. `conditional_router.py` （首个 ReAct Agent：无记忆）
 
 构建第一个真正意义上的 LangGraph Agent：支持工具调用与条件循环。
 
@@ -69,9 +69,9 @@
 
 ---
 
-### 5. `04_agent_with_memory.py` （完整 Agent：带记忆 + 系统提示）
+### 5. `agent_with_memory.py` （完整 Agent：带记忆 + 系统提示）
 
-在 `03` 基础上升级为生产级 Agent 范式。
+在 `4.` 基础上升级为生产级 Agent 范式。
 
 - ✅ 掌握点：
   - 启用 `MemorySaver()` 实现跨轮次记忆（`checkpointer=MemorySaver()`）。
@@ -89,15 +89,15 @@
 ### 🔔 全局注意事项
 
 - **学习路径建议**：  
-  `01`（理解图） → `02`（理解追踪） → `03`（理解 ReAct） → `04`（理解记忆+prompt）
+  `1.`（理解图） → `3.`（理解追踪） → `4.`（理解 ReAct） → `5.`（理解记忆+prompt）
 - 所有 `.py` 文件均依赖 `.env` 中的 `OPENAI_API_KEY` 和 `LANGCHAIN_API_KEY`。
 - 若想复用你的 RAG 工具，只需将 `get_weather` 替换为 `search_war_and_peace`，其余逻辑不变。
-- `01_workflow.png` 仅反映 `01_state_node_edge.py` 的简单线性流，**不代表 Agent 结构**。
+- `workflow.png` 仅反映 `state_node_edge.py` 的简单线性流，**不代表 Agent 结构**。
 
 ---
 
 ### 💡 **建议**
-- 尝试扩展 `04_agent_with_memory.py`，添加更多自定义工具（如RAG检索工具）
+- 尝试扩展 `agent_with_memory.py`，添加更多自定义工具（如RAG检索工具）
 - 实验不同的条件路由逻辑，实现更复杂的Agent决策路径
 - 使用LangSmith深入分析和优化Agent的推理过程
 - 尝试实现多Agent协作系统，通过LangGraph连接多个专业化Agent
