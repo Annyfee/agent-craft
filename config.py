@@ -15,11 +15,14 @@ except ImportError:
 # 3. 获取API_KEYS
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
+AMAP_MAPS_API_KEY = os.getenv("AMAP_MAPS_API_KEY")
 
 if not OPENAI_API_KEY:
     raise ValueError("× 请在.env中设置OPENAI_API_KEY")
 if not LANGCHAIN_API_KEY:
     raise ValueError("× 请在.env中设置LANGCHAIN_API_KEY")
+if not AMAP_MAPS_API_KEY:
+    raise ValueError("× 请在.env中设置AMAP_MAPS_API_KEY")
 
 
 

@@ -41,8 +41,8 @@
 |             | [07 RAG 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/07_rag_advanced)                          | [🏠](https://blog.csdn.net/2401_87328929/article/details/154408744) | Chroma · Reranker · RAG工具化 · 集成                          |  ⭐⭐⭐  |
 |             | [08 LangGraph 基础篇](https://github.com/Annyfee/agent-craft/tree/main/08_langgraph_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/154576812) | Langgraph三要素 · LangSmith · ReAct · 提示词安全注入               |  ⭐⭐⭐  |
 |             | [09 LangGraph 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/09_langgraph_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154803618) | Human-in-the-Loop · Graph-as-a-Tool · Multi-Agent 多智能体编排 | ⭐⭐⭐⭐  |
-| 🧠 **智能篇**  | 10 MCP 基础 (Client)                                                                                      |                                🚧撰写中                                | `MCP` 协议 · `CherryStudio` · 消费公共 MCP                     |  ⭐⭐⭐  |
-|             | 11 MCP 进阶 (Server)                                                                                      |                                 🚧                                  | `Streamable HTTP` · `src layout` · 构建私有 MCP              | ⭐⭐⭐⭐  |
+| 🧠 **智能篇**  | [10 MCP 基础 (Client)]()                                                                                  | [🏠](https://blog.csdn.net/2401_87328929/article/details/155316396) | Stdio传输 · Streaming输出 · AsyncExitStack · 连接公共MCP         | ⭐⭐⭐⭐  |
+|             | 11 MCP 进阶 (Server)                                                                                      |                                🚧撰写中                                | `Streamable HTTP` · `src layout` · 构建私有 MCP              | ⭐⭐⭐⭐  |
 |             | 12 Swarm & Agents SDK                                                                                   |                                 🚧                                  | `Swarm` · `Handoff` · “航空公司客服”项目                         | ⭐⭐⭐⭐  |
 | 🏁 **实战篇**  | 13 Streamlit 快速入门                                                                                       |                                 🚧                                  | `st.chat_input` · `st.session_state` · 封装 RAG Agent      |  ⭐⭐⭐  |
 |             | 14 综合实战项目                                                                                               |                                 🚧                                  | LangGraph + RAG + MCP + Streamlit + Vercel               | ⭐⭐⭐⭐⭐ |
@@ -53,7 +53,7 @@
 
 ## 🧩 当前学习建议（适用于已完成模块）
 
-目前已开放模块：**01 ~ 09**。  
+目前已开放模块：**01 ~ 10**。  
 建议按顺序学习，每一章都有完整代码示例与注释。
 
 ### ✅ 模块 01 — Agent 入门 & 环境搭建
@@ -101,7 +101,12 @@
 - **目标**：学会人工审批机制的添加，子图工具化的封装与多智能体流程编排。最终可以融合这三个知识点做一个复杂Agent出来。
 - **内容**：Human-in-the-Loop（人工干预）｜ Graph-as-a-Tool（图即工具）| Multi-Agent 多智能体编排
 
-> 📌 后续模块将陆续开放（MCP、Streamlit、Swarm等）
+### ✅ 模块 10 — MCP 基础篇
+
+- **目标**：能够用代码构建一个可连接MCP服务器的本地客户端，并可以流式输出。
+- **内容**：Stdio传输 | Streaming输出 | Adapter适配器 | AsyncExitStack | JSON-RPC | MCP协议 
+
+> 📌 后续模块将陆续开放（Streamlit、Swarm等）
 
 ---
 
@@ -126,7 +131,8 @@ flowchart LR
 
 ### 1️⃣ 环境准备
 
-> 💡 **Python 版本要求**: 项目支持 Python 3.10、3.11 和 3.12，推荐使用这些版本。
+> 💡 **环境要求**: Python 3.10–3.12，Node.js v20+
+
 
 ```bash
 # 1. 克隆项目
@@ -152,9 +158,10 @@ cp .env.example .env
 ```env
 OPENAI_API_KEY=your_deepseek_api_key_here
 LANGCHAIN_API_KEY=your_langsmith_api_key
+AMAP_MAPS_API_KEY=your_gaode_api_key
 ```
 
-> 💡 **获取API Key**: 访问 [DeepSeek官网](https://platform.deepseek.com/)、[LangSmith官网](https://smith.langchain.com/)
+> 💡 **获取API Key**: 访问 [DeepSeek官网](https://platform.deepseek.com/)、[LangSmith官网](https://smith.langchain.com/)、[高德地图官网](https://console.amap.com/dev/key/app)
 > 注册并获取API Key
 
 ### 3️⃣ 运行示例
