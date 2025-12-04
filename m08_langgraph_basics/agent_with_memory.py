@@ -76,8 +76,6 @@ workflow.add_edge("tools","agent")
 
 
 
-
-
 # 编译时启用记忆
 app = workflow.compile(checkpointer=MemorySaver())
 
@@ -100,9 +98,5 @@ if __name__ == '__main__':
 
         ai_msg = result["messages"][-1]
         print(f'AI：{ai_msg.content}')
-
-
-
-
 
 
