@@ -1,7 +1,9 @@
 from typing import Dict,Any,Type
 from langchain_core.tools import StructuredTool
-from m10_mcp_basics.mcp_client import MCPClient
+from m11_mcp_advanced.mcp_client import MCPClient
 from pydantic import Field,create_model
+from contextlib import AsyncExitStack
+
 
 class LangChainMCPAdapter:
     """
@@ -61,7 +63,7 @@ class LangChainMCPAdapter:
             else:
                 default_value = None
 
-            # 4.构建Pydantic字段定义
+            # 4.构建Pydantic字段定义 —— create_model 要求的特定格式
             fields[field_name] = (python_type,Field(default=default_value,description=description))
 
         # 动态创建一个Pydantic模型类
@@ -96,3 +98,39 @@ class LangChainMCPAdapter:
             )
             langchain_tools.append(tool)
         return langchain_tools
+
+    @classmethod
+    async def load_mcp_tools(cls,stack: AsyncExitStack, configs: list):
+        """
+        负责遍历配置，批量建立连接，收集所有工具。
+        使用stack将连接生命周期托管给上层
+        """
+        all_tools = []
+        for conf in configs:
+            print(f'🔌 正在连接:{conf["name"]} == ({conf.get("transport","stdio")})...')
+
+            # 根据 transport 类型创建不同的客户端
+            transport = conf.get("transport","stdio")
+            if transport == "stdio":
+                # 初始化 Client
+                client = MCPClient(
+                    transport="stdio",
+                    command=conf["command"],
+                    args=conf["args"],
+                    env=conf.get("env")  # 可选参数
+                )
+            else: # http
+                client = MCPClient(
+                    transport="http",
+                    url=conf["url"]
+                )
+
+            # 🔥:enter_async_context 替代了async with 缩进
+            # 这样无论有多少个MCP，代码层级都不会变深
+            adapter = await stack.enter_async_context(cls(client))
+            # 批量获取一个MCP下的所有工具
+            tools = await adapter.get_tools()
+            print(f'    ✅️ 获取工具{[t.name for t in tools]}')
+            all_tools.extend(tools)
+
+        return all_tools

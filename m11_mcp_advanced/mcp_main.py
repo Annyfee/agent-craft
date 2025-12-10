@@ -9,26 +9,48 @@ from langgraph.graph import StateGraph,MessagesState,START,END
 from langgraph.prebuilt import ToolNode
 
 from config import OPENAI_API_KEY,AMAP_MAPS_API_KEY
-from m10_mcp_basics.agent_stream import run_agent_with_streaming
-from m10_mcp_basics.mcp_client import MCPClient
-from m10_mcp_basics.mcp_bridge import LangChainMCPAdapter
+from m11_mcp_advanced.agent_stream import run_agent_with_streaming
+from m11_mcp_advanced.mcp_bridge import LangChainMCPAdapter
 
 
 
 # ===环境配置===
-# 环境兼容
-COMMAND = "npx.cmd" if sys.platform == "win32" else "npx"
 # 复制当前py进程的环境变量,并在复制的环境变量里新增一条，确保安全可控
 env_vars = os.environ.copy()
 env_vars["AMAP_MAPS_API_KEY"] = AMAP_MAPS_API_KEY
 
 MCP_SERVER_CONFIGS = [
+    # 方式1.1: 云端代理 —— stdio模式
     {
         "name":"高德地图", # 打印使用了什么MCP，可移除
-        "command":COMMAND,
+        "transport":"stdio", # 指定传输模式
+        "command":"npx",
         "args":["-y", "@amap/amap-maps-mcp-server"],
         "env":env_vars
     }
+
+    # 方式1.2: 云端MCP服务 —— Streamable HTTP模式
+    # {
+    #     "name":"高德地图",
+    #     "transport":"http",
+    #     "url": f"https://mcp.amap.com/mcp?key={AMAP_MAPS_API_KEY}"
+    # }
+
+    # 方式2.1: 本地工具 —— stdio模式
+    # {
+    #     "name": "本地天气",
+    #     "transport": "stdio",
+    #     "command": "python",
+    #     "args": ["-m", "m10_mcp_basics.stdio_server"],
+    #     "env": None
+    # }
+
+    # 方式2.2:本地MCP服务 —— Streamable HTTP 模式
+    # {
+    #     "name":"本地天气",
+    #     "transport":"http",
+    #     "url": "http://127.0.0.1:8001/mcp"
+    # }
     # {...}  之后MCP工具可随需求扩展增加
 ]
 
@@ -85,37 +107,13 @@ def build_graph(available_tools):
     return workflow.compile()
 
 
-# ===MCP工具批量初始化===
-async def load_mcp_tools(stack:AsyncExitStack,configs:list):
-    """
-    负责遍历配置，批量建立连接，收集所有工具。
-    使用stack将连接生命周期托管给上层
-    """
-    all_tools = []
-    for conf in configs:
-        print(f'🔌 正在连接:{conf["name"]}...')
-        # 初始化 Client
-        client = MCPClient(
-            command=conf["command"],
-            args=conf["args"],
-            env=conf.get("env") # 可选参数
-        )
-        # 🔥:enter_async_context 替代了async with 缩进
-        # 这样无论有多少个MCP，代码层级都不会变深
-        adapter = await stack.enter_async_context(LangChainMCPAdapter(client))
-        # 批量获取一个MCP下的所有工具
-        tools = await adapter.get_tools()
-        print(f'    ✅️ 获取工具{[t.name for t in tools]}')
-        all_tools.extend(tools)
-
-    return all_tools
 
 # ===主程序===
 async def main():
     # 使用ExitStack统一管理所有资源的关闭
     async with AsyncExitStack() as stack:
         # A.插件(MCP)注入阶段 -- 允许为空
-        dynamic_tools = await load_mcp_tools(stack,MCP_SERVER_CONFIGS)
+        dynamic_tools = await LangChainMCPAdapter.load_mcp_tools(stack,MCP_SERVER_CONFIGS)
 
         # B.图构建阶段
         app = build_graph(available_tools=dynamic_tools)
