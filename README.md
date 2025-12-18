@@ -28,7 +28,7 @@
 ## 🧭 模块总览（16 模块）
 
 > 💡 每个模块对应独立目录（含代码、说明与示例），可独立运行与学习。  
-> 🔥 已更新至 11 MCP 进阶篇，持续更新中！
+> 🔥 已更新至 12 Agents SDK & Swarm 模式，持续更新中！
 
 |     章节      | 模块                                                                                                       |                                 博客                                  | 核心关键词                                                        |  难度   |
 |:-----------:|:---------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------:|:-------------------------------------------------------------|:-----:|
@@ -43,8 +43,8 @@
 |             | [09 LangGraph 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/m09_langgraph_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154803618) | Human-in-the-Loop · Graph-as-a-Tool · Multi-Agent 多智能体编排     | ⭐⭐⭐⭐  |
 | 🧠 **智能篇**  | [10 MCP 基础 (Server)](https://github.com/Annyfee/agent-craft/tree/main/m10_mcp_basics)                    | [🏠](https://blog.csdn.net/2401_87328929/article/details/155660129) | Stdio · Streamable HTTP · FastMCP框架 · Transport通信 · 构建私有 MCP |  ⭐⭐   |
 |             | [11 MCP 进阶 (Client)](https://github.com/Annyfee/agent-craft/tree/main/m11_mcp_advanced)                  | [🏠](https://blog.csdn.net/2401_87328929/article/details/155316396) | langchain-mcp-adapters框架 · 流式输出 · AsyncExitStack · 连接公共MCP   |  ⭐⭐⭐  |
-|             | 12 Agents SDK & Swarm 模式                                                                                 |                                🚧撰写中                                | `Swarm` · `Handoff` · “航空公司客服”项目                             | ⭐⭐⭐⭐  |
-| 🏁 **实战篇**  | 13 Streamlit 快速入门                                                                                        |                                 🚧                                  | `st.chat_input` · `st.session_state` · 封装 RAG Agent          |  ⭐⭐⭐  |
+|             | [12 Agents SDK & Swarm 模式](https://github.com/Annyfee/agent-craft/tree/main/m12_agents_sdk_swarm)        | [🏠](https://blog.csdn.net/2401_87328929/article/details/155890608) | Swarm · Handoff · Agents SDK · 去中心化 ·“航空公司客服”项目              | ⭐⭐⭐⭐  |
+| 🏁 **实战篇**  | 13 Streamlit 快速入门                                                                                        |                                🚧撰写中                                | `st.chat_input` · `st.session_state` · 封装 RAG Agent          |  ⭐⭐⭐  |
 |             | 14 综合实战项目                                                                                                |                                 🚧                                  | LangGraph + RAG + MCP + Streamlit + Vercel                   | ⭐⭐⭐⭐⭐ |
 | 🚀 **工程篇**  | 15 部署与本地化                                                                                                |                                 🚧                                  | `Ollama` · `LM Studio` · `LangServe`                         |  ⭐⭐⭐  |
 |             | **16 项目打包与发布**                                                                                           |                                 🚧                                  | `pyproject.toml` · `pip build` · `setuptools` · 发布           | ⭐⭐⭐⭐  |
@@ -53,7 +53,7 @@
 
 ## 🧩 当前学习建议（适用于已完成模块）
 
-目前已开放模块：**01 ~ 11**。  
+目前已开放模块：**01 ~ 12**。  
 建议按顺序学习，每一章都有完整代码示例与注释。
 
 ### ✅ 模块 01 — Agent 入门 & 环境搭建
@@ -111,7 +111,12 @@
 - **目标**：会使用langchain-mcp-adapters框架，搭建一个支持Stdio与Streamable双模通信的MCP客户端，最终可在控制台流式打印。
 - **内容**：langchain-mcp-adapters框架 | 流式输出 | AsyncExitStack | 连接公共MCP 
 
-> 📌 后续模块将陆续开放（Streamlit、Swarm等）
+### ✅ 模块 12 — Agents SDK & Swarm 模式
+
+- **目标**：理解Swarm模式，并能用Agents SDK做一个多Agent协调互通的客服集群。
+- **内容**：Swarm | Handoff | Context_variables | Agents SDK | 去中心化
+
+> 📌 后续模块将陆续开放（Streamlit、模型部署等）
 
 ---
 
@@ -164,10 +169,13 @@ cp .env.example .env
 OPENAI_API_KEY=your_deepseek_api_key_here
 LANGCHAIN_API_KEY=your_langsmith_api_key
 AMAP_MAPS_API_KEY=your_gaode_api_key
+CHATGPT_API_KEY=your_chatgpt_api_key
 ```
 
-> 💡 **获取API Key**: 访问 [DeepSeek官网](https://platform.deepseek.com/)、[LangSmith官网](https://smith.langchain.com/)、[高德地图官网](https://console.amap.com/dev/key/app)
+> 💡 **获取API Key**: 访问 [DeepSeek官网](https://platform.deepseek.com/)、[LangSmith官网](https://smith.langchain.com/)、[高德地图官网](https://console.amap.com/dev/key/app)、[ChatGPT官网](https://platform.openai.com/api-keys)
 > 注册并获取API Key
+> 
+> 📌 **补充说明**: 除了 OPENAI_API_KEY (LLM 的 API Key) 是刚需外，其他 API Key 按需填入，无需一次性全部配置。
 
 ### 3️⃣ 运行示例
 
@@ -186,4 +194,5 @@ python "m01_agent_introduction/Agent-demo.py"
 - 📚 博客主页：[CSDN 主页](https://blog.csdn.net/2401_87328929)
 
 🌟 如果这个项目帮到了你，请给我点个 Star ⭐，让更多人看到它！
+
 
