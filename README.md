@@ -172,7 +172,7 @@ AMAP_MAPS_API_KEY=your_gaode_api_key
 CHATGPT_API_KEY=your_chatgpt_api_key
 ```
 
-> 💡 **获取API Key**: 访问 [DeepSeek官网](https://platform.deepseek.com/)、[LangSmith官网](https://smith.langchain.com/)、[高德地图官网](https://console.amap.com/dev/key/app)、[ChatGPT官网](https://platform.openai.com/api-keys)
+> 💡 **获取API Key**: 访问 [DeepSeek](https://platform.deepseek.com/)、[LangSmith](https://smith.langchain.com/)、[高德地图](https://console.amap.com/dev/key/app)、[ChatGPT](https://platform.openai.com/api-keys)
 > 注册并获取API Key
 > 
 > 📌 **补充说明**: 除了 OPENAI_API_KEY (LLM 的 API Key) 是刚需外，其他 API Key 按需填入，无需一次性全部配置。
