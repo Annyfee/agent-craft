@@ -1,6 +1,7 @@
 from agents.mcp import MCPServerStdio, MCPServerStdioParams
 from openai import AsyncOpenAI
-from agents import Agent, OpenAIChatCompletionsModel
+from agents.agent import Agent
+from agents.models.openai_chatcompletions import OpenAIChatCompletionsModel
 from config import OPENAI_API_KEY
 from m12_agents_sdk_swarm.tools import execute_refund, check_seat
 from config import AMAP_MAPS_API_KEY

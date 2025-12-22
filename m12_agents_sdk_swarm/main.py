@@ -1,23 +1,16 @@
-# 问题
-# 1. 命名不能中文
-# 2. chatgpt默认启用smith，要关闭它
-# 3. 如果不想关闭，需要配置一个api_key
-# 4. 哪怕配置好，chatgpt与这边连接延迟较高，tracing追踪也不稳定，而且之前我们已经讲了一个langsmith，所以这里不用它其实更好。
-
-
 import asyncio
 from openai.types.responses import ResponseTextDeltaEvent
-from agents import Runner
+from agents.run import Runner
 from m12_agents_sdk_swarm.agent import triage_agent,amap_server
 from m12_agents_sdk_swarm.tools import context_variables
 
 # 不启用Chatgpt官方提供的Tracing(无需配置api_key)
-from agents import set_tracing_disabled
+from agents.tracing import set_tracing_disabled
 set_tracing_disabled(True)
 
 # 启用Chatgpt官方提供的Tracing(需要配置api_key)
 # from config import CHATGPT_API_KEY
-# from agents import set_tracing_export_api_key
+# from agents.tracing import set_tracing_export_api_key
 # set_tracing_export_api_key(CHATGPT_API_KEY)
 
 

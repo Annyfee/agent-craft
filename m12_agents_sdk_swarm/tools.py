@@ -1,4 +1,5 @@
-from agents import function_tool
+# 修改导入方式以使用正确的openai-agents包
+from agents.tool import function_tool
 
 # 全局上下文，所有 Agent 共享
 context_variables = {
