@@ -46,8 +46,7 @@
 |             | [12 Agents SDK & Swarm 模式](https://github.com/Annyfee/agent-craft/tree/main/m12_agents_sdk_swarm)        | [🏠](https://blog.csdn.net/2401_87328929/article/details/155890608) | Swarm · Handoff · Agents SDK · 去中心化 ·“航空公司客服”项目              | ⭐⭐⭐⭐  |
 | 🏁 **实战篇**  | 13 Streamlit 快速入门                                                                                        |                                🚧撰写中                                | `st.chat_input` · `st.session_state` · 封装 RAG Agent          |  ⭐⭐⭐  |
 |             | 14 综合实战项目                                                                                                |                                 🚧                                  | LangGraph + RAG + MCP + Streamlit + Vercel                   | ⭐⭐⭐⭐⭐ |
-| 🚀 **工程篇**  | 15 部署与本地化                                                                                                |                                 🚧                                  | `Ollama` · `LM Studio` · `LangServe`                         |  ⭐⭐⭐  |
-|             | **16 项目打包与发布**                                                                                           |                                 🚧                                  | `pyproject.toml` · `pip build` · `setuptools` · 发布           | ⭐⭐⭐⭐  |
+| 🚀 **工程篇**  | 15 部署上线与项目总结                                                                                             |                                 🚧                                  | `Ollama` · `LM Studio` · `LangServe`                         |  ⭐⭐⭐  |
 
 ---
 
