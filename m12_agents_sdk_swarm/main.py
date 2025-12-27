@@ -33,7 +33,11 @@ async def main():
         messages.append({"role": "user", "content": user_input})
 
         # 启动流式响应
-        result = Runner.run_streamed(cur_agent, input=messages, context=context_variables)
+        result = Runner.run_streamed(
+            cur_agent,
+            input=messages,
+            context=context_variables
+        )
 
         # 状态变量
         current_agent_name = None  # 当前Agent名称
