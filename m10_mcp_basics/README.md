@@ -4,7 +4,7 @@
 
 ---
 
-### 1. `stdio_server.py` （标准输入输出MCP服务器）
+### 1. `s01_stdio_server.py` （标准输入输出MCP服务器）
 
 实现基于标准输入输出的MCP服务器，支持本地进程间通信。
 
@@ -24,7 +24,7 @@
 
 ---
 
-### 2. `streamable_http_server.py` （HTTP协议MCP服务器）
+### 2. `s02_streamable_http_server.py` （HTTP协议MCP服务器）
 
 实现基于HTTP协议的MCP服务器，支持远程网络调用。
 
