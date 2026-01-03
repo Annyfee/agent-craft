@@ -77,7 +77,7 @@ if __name__ == '__main__':
     config = {
         "configurable":{"thread_id":"user123"}
     }
-    user_input = "请帮我给 boss@example.com 发一封邮件，内容是：会议推迟到明天下午3点。"
+    user_input = "请帮我给 boss@example.com 发一封邮件，内容是：会议推迟到明天下午3点。不要询问其他细节。"
 
     print("用户输入:",user_input)
     print("\nAgent正在思考...\n")
