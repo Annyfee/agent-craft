@@ -9,7 +9,7 @@ from langgraph.graph import StateGraph,MessagesState,START,END
 from langgraph.prebuilt import ToolNode
 
 from config import OPENAI_API_KEY,AMAP_MAPS_API_KEY
-from m11_mcp_advanced.agent_stream import run_agent_with_streaming
+from m11_mcp_advanced.s01_agent_stream import run_agent_with_streaming
 from m11_mcp_advanced.mcp_bridge import LangChainMCPAdapter
 
 

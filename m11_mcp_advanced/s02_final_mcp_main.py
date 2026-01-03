@@ -11,7 +11,7 @@ from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.prebuilt import ToolNode
 
 # 复用你的流式输出模块和配置
-from m11_mcp_advanced.agent_stream import run_agent_with_streaming
+from m11_mcp_advanced.s01_agent_stream import run_agent_with_streaming
 from config import OPENAI_API_KEY, AMAP_MAPS_API_KEY
 
 # === 配置 MCP 服务器 ===
