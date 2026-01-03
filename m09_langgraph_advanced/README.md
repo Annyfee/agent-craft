@@ -4,7 +4,7 @@
 
 ---
 
-### 1. `human_approval.py` （人工审批机制）
+### 1. `s01_human_approval.py` （人工审批机制）
 
 实现带有人工干预的智能体工作流，为敏感操作添加审批环节。
 
@@ -23,7 +23,7 @@
 
 ---
 
-### 2. `graph_as_a_tool.py` （子图工具化封装）
+### 2. `s02_graph_as_a_tool.py` （子图工具化封装）
 
 演示如何将一个完整的 LangGraph 子工作流封装为单个工具（Graph-as-a-Tool 模式）。
 
@@ -42,7 +42,7 @@
 
 ---
 
-### 3. `multi_agent_orchestration.py` （多智能体协作系统）
+### 3. `s03_multi_agent_orchestration.py` （多智能体协作系统）
 
 构建由总控节点协调多个专家智能体的协作系统，实现专业化分工。
 
@@ -63,7 +63,7 @@
 
 ---
 
-### 4. `supervisor_agent_ops_system.py` （企业级运维智能体系统）
+### 4. `s04_supervisor_agent_ops_system.py` （企业级运维智能体系统）
 
 整合前述所有高级特性，构建一个完整的企业级 IT 运维智能体系统。
 
@@ -87,15 +87,15 @@
 ### 🔔 全局注意事项
 
 - **学习路径建议**：
-  `1.`（人工干预） → `2.`（子图封装） → `3.`（多智能体基础） → `4.`（企业级综合应用）
+  `s01.`（人工干预） → `s02.`（子图封装） → `s03.`（多智能体基础） → `s04.`（企业级综合应用）
 - 所有 `.py` 文件均依赖根目录 `.env` 中的 `OPENAI_API_KEY` 和 `LANGCHAIN_API_KEY`
 - LangSmith 追踪功能已默认开启，可在 [LangSmith UI](https://smith.langchain.com) 实时查看执行流程
-- `supervisor_agent_ops_system.py` 是一个整合性示例，建议在理解前三个文件的基础上学习
+- `s04_supervisor_agent_ops_system.py` 是一个整合性示例，建议在理解前三个文件的基础上学习
 
 ---
 
 ### 💡 **建议**
-- 尝试扩展 `supervisor_agent_ops_system.py`，添加更多专业角色（如安全专家、性能分析师）
+- 尝试扩展 `s04_supervisor_agent_ops_system.py`，添加更多专业角色（如安全专家、性能分析师）
 - 实验不同的 Supervisor 决策逻辑，优化任务分配策略
 - 将真实的运维工具或 API 集成到系统中，构建实用的运维助手
 - 探索在生产环境中部署此类系统的最佳实践，如性能优化、错误处理和监控
