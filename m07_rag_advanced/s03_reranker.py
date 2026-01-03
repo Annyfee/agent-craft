@@ -15,7 +15,7 @@ model_name_str = 'BAAI/bge-small-en-v1.5'
 
 if not os.path.exists(Persist_directory):
     print(f"错误: 知识库文件 {Persist_directory} 未找到。")
-    print("请先运行'build_index.py'生成向量数据库，再运行该文件")
+    print("请先运行's03_build_index.py'生成向量数据库，再运行该文件")
     exit()
 
 print('---加载本地向量数据库---\n')
@@ -55,7 +55,7 @@ print('--检索器已升级为Reranker模式--\n')
 # 2. A-增强
 sys_prompt = """
 你是一个博学的历史学家和文学评论家。
-请根据以下上下文回答问题。如果上下文**强烈暗示**了答案，即使未明说，也可推理回答。
+请根据以下上下文回答问题。如果上下文**暗示**了答案，即使未明说，也可推理回答。
 如果完全无关，请回答“对不起，根据所提供的上下文我不知道”。
 
 [上下文]: {context}

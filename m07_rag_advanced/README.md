@@ -15,7 +15,7 @@
 
 ---
 
-### 2. `build_index.py` （构建 Chroma 向量数据库）
+### 2. `s01_build_index.py` （构建 Chroma 向量数据库）
 
 将 `war_and_peace.txt` 加载、分块、向量化，并存入 Chroma 持久化向量数据库。
 
@@ -29,11 +29,11 @@
   - 该脚本仅需运行一次，成功后会生成目录 chroma_db_war_and_peace_bge_small_en_v1.5。
   - 首次运行需下载 Embedding 模型（约2分钟）+ 向量化全文（约3分钟），总耗时较长。
   - ✅ 项目已附带预建好的 chroma_db_war_and_peace_bge_small_en_v1.5 文件夹，推荐直接使用，无需重复运行此脚本。
-  - 如需重建，请先手动删除该目录再执行。
+  - 如需重建，请先手动删除该文件夹，再执行。
 
 ---
 
-### 3. `load_from_chroma.py` （从 Chroma 加载向量库）
+### 3. `s02_load_from_chroma.py` （从 Chroma 加载向量库）
 
 加载已持久化的 Chroma 向量数据库，用于后续检索。
 
@@ -48,7 +48,7 @@
 
 ---
 
-### 4. `reranker.py` （引入精排序器）
+### 4. `s03_reranker.py` （引入精排序器）
 
 在召回结果上应用 Reranker 模型，提升上下文相关性。
 
@@ -64,7 +64,7 @@
 
 ---
 
-### 5. `rag_as_tool.py` （RAG 工具化封装）
+### 5. `s04_rag_as_tool.py` （RAG 工具化封装）
 
 将 RAG 链封装为 LangChain `@tool`，供 Agent 调用。
 
@@ -79,7 +79,7 @@
 
 ---
 
-### 6. `memory_rag_agent.py` （终极集成 Agent）
+### 6. `s05_memory_rag_agent.py` （终极集成 Agent）
 
 首次融合 LangChain 六大核心模块，构建带记忆、能自主决策的智能体。
 
@@ -102,9 +102,9 @@
 
 ### 🔔 全局注意事项
 
-- 所有 `.py` 文件（除 `build_index.py` 外）均依赖 `chroma_db_war_and_peace_bge_small_en_v1.5` 目录。
-- 推荐直接使用已提供的向量数据库文件夹，跳过 `build_index.py` 的长时间构建过程。
-- 若自行运行 `build_index.py`，请确保 `war_and_peace.txt` 已就位。
+- 所有 `.py` 文件（除 `s01_build_index.py` 外）均依赖 `chroma_db_war_and_peace_bge_small_en_v1.5` 目录。
+- 推荐直接使用已提供的向量数据库文件夹，跳过 `s01_build_index.py` 的长时间构建过程。
+- 若自行运行 `s01_build_index.py`，请确保 `war_and_peace.txt` 已就位。
 - 如需更换 Embedding 模型（如升级至 `bge-m3`），需同步更新 `build_index.py` 和 RAG 脚本中的模型名。
 
 
@@ -112,4 +112,4 @@
 
 ### 💡 **建议**：
 
-直接运行 `memory_rag_agent.py` 体验完整 Agent 能力；若想自定义知识库，可替换 `war_and_peace.txt` 并重新运行 build_index.py（记得先删除旧数据库目录）。
+直接运行 `s05_memory_rag_agent.py` 体验完整 Agent 能力；若想自定义知识库，可替换 `war_and_peace.txt` 并重新运行 build_index.py（记得先删除旧数据库目录）。
