@@ -1,8 +1,8 @@
 import asyncio
 from openai.types.responses import ResponseTextDeltaEvent
 from agents.run import Runner
-from m12_agents_sdk_swarm.agent import triage_agent,amap_server
-from m12_agents_sdk_swarm.tools import context_variables
+from m12_agents_sdk_swarm.s02_agent import triage_agent,amap_server
+from m12_agents_sdk_swarm.s01_tools import context_variables
 
 # 不启用Chatgpt官方提供的Tracing(无需配置api_key)
 from agents.tracing import set_tracing_disabled
