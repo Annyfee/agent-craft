@@ -1,3 +1,4 @@
+import config
 from embeddings import get_embeddings
 
 
@@ -5,7 +6,7 @@ from embeddings import get_embeddings
 print('---正在加载本地嵌入模型(bge-small-zh-v1.5)...---')
 
 # 理论：有embedding的向量模型
-embeddings_model = get_embeddings("bge-small-zh-v1.5")
+embeddings_model = get_embeddings("BAAI/bge-small-zh-v1.5")
 print('嵌入模型载入完毕')
 
 # 演示：将文本转换为向量

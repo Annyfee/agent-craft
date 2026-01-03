@@ -9,6 +9,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 
+
 # --- 模块A (离线操作) ---
 # 1. 加载&分割 2. 向量化 3. 存储
 KNOWLEDGE_BASE_CONTENT = """
@@ -39,7 +40,7 @@ loader = TextLoader('knowledge_base.txt',encoding='utf8')
 docs = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=250,chunk_overlap=40)
 splits = text_splitter.split_documents(docs)
-embedding_model = get_embeddings("bge-small-zh-v1.5")
+embedding_model = get_embeddings("BAAI/bge-small-zh-v1.5")
 db = FAISS.from_documents(splits,embedding_model) # 在内存中构建向量索引，但不持久化到本地文件
 print('---模块A(Indexing)完成---\n')
 

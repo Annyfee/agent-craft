@@ -1,5 +1,6 @@
 # 仅负责: 切片 -> 向量化 -> 构建索引 -> 保存到磁盘
 # 运行一次即可，无需每次检索都运行
+import config
 from embeddings import get_embeddings
 import os
 from langchain_community.document_loaders import TextLoader

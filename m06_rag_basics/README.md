@@ -5,7 +5,7 @@ RAG 概念｜文本加载与分块 (Load & Split)｜向量化 (Embedding)｜向�
 
 ---
 
-### 1. `load_and_split.py`（文本加载与分块）
+### 1. `s01_load_and_split.py`（文本加载与分块）
 加载本地 `.txt` 文档，并使用 `RecursiveCharacterTextSplitter` 将其智能分割成“知识卡片”。
 
 ✅ **掌握点**：
@@ -25,7 +25,18 @@ RAG 概念｜文本加载与分块 (Load & Split)｜向量化 (Embedding)｜向�
 
 ---
 
-### 3. `build_index.py`（向量存储与索引构建）
+### 3. `s02_embedding.py`（文本向量化）
+演示如何加载本地 Embedding 模型，并将任意文本（知识卡片）转换为"语义向量"。
+
+✅ **掌握点**：
+- 使用 HuggingFaceEmbeddings 加载开源本地模型（如 BAAI/bge-small-zh-v1.5）。
+- 理解 Embedding（向量化）是 RAG 的"语义标签"，用于实现"语义搜索"。
+- 如何调用 embed_query 将文本转换为向量（一串数字）。
+
+
+---
+
+### 4. `s03_build_index.py`（向量存储与索引构建）
 使用 FAISS 向量索引库将向量化后的文本片段构建为可检索的向量数据库，并持久化到本地。
 
 ✅ **掌握点**：
@@ -35,7 +46,7 @@ RAG 概念｜文本加载与分块 (Load & Split)｜向量化 (Embedding)｜向�
 
 ---
 
-### 4. `rag_chain_full.py`（LCEL 完整 RAG 链）
+### 5. `s04_rag_chain_full.py`（LCEL 完整 RAG 链）
 使用 LCEL（LangChain 表达式语言）“手动组装”一个完整的 RAG 流程，实现“检索-增强-生成”的闭环。
 
 ✅ **掌握点**：

@@ -1,3 +1,4 @@
+import config
 import os
 from langchain_community.document_loaders import TextLoader # 加载
 from langchain_text_splitters import RecursiveCharacterTextSplitter # 分割
