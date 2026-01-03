@@ -4,7 +4,7 @@
 
 ---
 
-### 1. `state_node_edge.py` （LangGraph 最小状态机）
+### 1. `s01_state_node_edge.py` （LangGraph 最小状态机）
 
 演示 LangGraph 最基础的三要素：State（状态）、Node（节点）、Edge（边）。
 
@@ -35,7 +35,7 @@
 
 ---
 
-### 3. `langsmith_trace.py` （状态机 + LangSmith 追踪）
+### 3. `s02_langsmith_trace.py` （状态机 + LangSmith 追踪）
 
 在 `1.` 的基础上启用 LangSmith，实现执行过程可视化追踪。
 
@@ -50,7 +50,7 @@
 
 ---
 
-### 4. `conditional_router.py` （首个 ReAct Agent：无记忆）
+### 4. `s03_conditional_router.py` （首个 ReAct Agent：无记忆）
 
 构建第一个真正意义上的 LangGraph Agent：支持工具调用与条件循环。
 
@@ -69,7 +69,7 @@
 
 ---
 
-### 5. `agent_with_memory.py` （完整 Agent：带记忆 + 系统提示）
+### 5. `s04_agent_with_memory.py` （完整 Agent：带记忆 + 系统提示）
 
 在 `4.` 基础上升级为生产级 Agent 范式。
 
@@ -89,7 +89,7 @@
 ### 🔔 全局注意事项
 
 - **学习路径建议**：  
-  `1.`（理解图） → `3.`（理解追踪） → `4.`（理解 ReAct） → `5.`（理解记忆+prompt）
+  `s01.`（理解图） → `s02`（理解追踪） → `s03`（理解 ReAct） → `s04`（理解记忆+prompt）
 - 所有 `.py` 文件均依赖 `.env` 中的 `OPENAI_API_KEY` 和 `LANGCHAIN_API_KEY`。
 - 若想复用你的 RAG 工具，只需将 `get_weather` 替换为 `search_war_and_peace`，其余逻辑不变。
 - `workflow.png` 仅反映 `state_node_edge.py` 的简单线性流，**不代表 Agent 结构**。
@@ -97,7 +97,7 @@
 ---
 
 ### 💡 **建议**
-- 尝试扩展 `agent_with_memory.py`，添加更多自定义工具（如RAG检索工具）
+- 尝试扩展 `s04_agent_with_memory.py`，添加更多自定义工具（如RAG检索工具）
 - 实验不同的条件路由逻辑，实现更复杂的Agent决策路径
 - 使用LangSmith深入分析和优化Agent的推理过程
 - 尝试实现多Agent协作系统，通过LangGraph连接多个专业化Agent
