@@ -5,7 +5,7 @@ Function Calling｜@tool 工具封装｜ReAct 循环｜Agent 构建｜SQL Agent�
 
 ---
 
-### 1. `define_toolbox.py`（工具函数定义）  
+### 1. `s01_define_toolbox.py`（工具函数定义）  
 使用 `@tool` 装饰器将 Python 函数封装为 LangChain 可调用的工具。  
 
 ✅ 掌握点：  
@@ -15,7 +15,7 @@ Function Calling｜@tool 工具封装｜ReAct 循环｜Agent 构建｜SQL Agent�
 
 ---
 
-### 2. `general_agent.py`（通用 Agent 构建）  
+### 2. `s02_general_agent.py`（通用 Agent 构建）  
 基于 `create_tool_calling_agent` 创建支持工具调用的智能体。  
 
 ✅ 掌握点：  
@@ -25,7 +25,7 @@ Function Calling｜@tool 工具封装｜ReAct 循环｜Agent 构建｜SQL Agent�
 
 ---
 
-### 3. `sql_agent.py`（SQL 专用 Agent）  
+### 3. `s03_sql_agent.py`（SQL 专用 Agent）  
 一键构建自然语言查询数据库的智能体。  
 
 ✅ 掌握点：  
@@ -35,7 +35,7 @@ Function Calling｜@tool 工具封装｜ReAct 循环｜Agent 构建｜SQL Agent�
 
 ---
 
-### 4. `memory_general_agent.py`（带记忆的 Agent）  
+### 4. `s04_memory_general_agent.py`（带记忆的 Agent）  
 将 Agent 与对话历史结合，实现多轮上下文感知。  
 
 ✅ 掌握点：  
@@ -45,7 +45,7 @@ Function Calling｜@tool 工具封装｜ReAct 循环｜Agent 构建｜SQL Agent�
 
 ---
 
-### 5. `caching.py`（缓存优化技巧）  
+### 5. `s05_caching.py`（缓存优化技巧）  
 在开发调试阶段避免重复调用 LLM，节省成本与时间。  
 
 ✅ 掌握点：  
@@ -55,7 +55,7 @@ Function Calling｜@tool 工具封装｜ReAct 循环｜Agent 构建｜SQL Agent�
 
 ---
 
-### 6. `streaming.py`（流式输出实战）  
+### 6. `s06_streaming.py`（流式输出实战）  
 实现 AI 回复像打字机一样逐字输出，提升用户体验。  
 
 ✅ 掌握点：  
