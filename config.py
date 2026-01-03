@@ -12,7 +12,22 @@ try:
 except ImportError:
     pass # 如果没装 langsmith，省略
 
-# 3. 获取API_KEYS
+
+# 3. 解决TensorFlow & Numpy 兼容性告警
+def silence_framework_warnings():
+    import os
+    import warnings
+    import logging
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+    warnings.filterwarnings('ignore')
+    logging.getLogger('tensorflow').setLevel(logging.ERROR)
+
+silence_framework_warnings()
+
+
+
+
+# 4. 获取API_KEYS
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
 AMAP_MAPS_API_KEY = os.getenv("AMAP_MAPS_API_KEY")
