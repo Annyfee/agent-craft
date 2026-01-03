@@ -39,7 +39,7 @@ MCP_SERVERS = {
     # },
 
     # 方式2.2:本地MCP服务 —— Streamable HTTP 模式
-    # 注:此方法需要提前运行m10的 streamable_http_server.py
+    # 注:此方法需要提前运行m10的 s02_streamable_http_server.py
     # "本地天气":{
     #     "transport":"streamable_http",
     #     "url": "http://127.0.0.1:8001/mcp"
