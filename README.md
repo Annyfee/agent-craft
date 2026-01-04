@@ -28,31 +28,31 @@
 ## 🧭 模块总览（15 模块）
 
 > 💡 每个模块对应独立目录（含代码、说明与示例），可独立运行与学习。  
-> 🔥 已更新至 12 Agents SDK & Swarm 模式，持续更新中！
+> 🔥 已更新至 13 Streamlit 快速入门，持续更新中！
 
-|     章节      | 模块                                                                                                       |                                 博客                                  | 核心关键词                                                        |  难度   |
-|:-----------:|:---------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------:|:-------------------------------------------------------------|:-----:|
-| 🏗️ **基础篇** | [01 Agent 入门 & 环境搭建](https://github.com/Annyfee/agent-craft/tree/main/m01_agent_introduction)            | [🏠](https://blog.csdn.net/2401_87328929/article/details/153729555) | OpenAI API                                                   |   ⭐   |
-|             | [02 LLM 基础调用](https://github.com/Annyfee/agent-craft/tree/main/m02_llm_fundamentals)                     | [🏠](https://blog.csdn.net/2401_87328929/article/details/153735431) | LLM API 调用 · prompt · 上下文记忆                                  |   ⭐   |
-|             | [03 Function Calling 与工具调用](https://github.com/Annyfee/agent-craft/tree/main/m03_function_calling_tools) | [🏠](https://blog.csdn.net/2401_87328929/article/details/153866573) | Function Call · 工具函数封装                                       |  ⭐⭐   |
-| ⚙️ **框架篇**  | [04 LangChain 基础篇](https://github.com/Annyfee/agent-craft/tree/main/m04_langchain_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/153978186) | LLM · Prompt · Chain · Memory                                |  ⭐⭐   |
-|             | [05 LangChain 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/m05_langchain_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154064397) | Agents · 缓存 · 流式输出                                           |  ⭐⭐⭐  |
-|             | [06 RAG 基础篇](https://github.com/Annyfee/agent-craft/tree/main/m06_rag_basics)                            | [🏠](https://blog.csdn.net/2401_87328929/article/details/154230067) | RAG概念 · Split · Embedding · FAISS · RAG 链                    |  ⭐⭐   |
-|             | [07 RAG 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/m07_rag_advanced)                          | [🏠](https://blog.csdn.net/2401_87328929/article/details/154408744) | Chroma · Reranker · RAG工具化 · 集成                              |  ⭐⭐⭐  |
-|             | [08 LangGraph 基础篇](https://github.com/Annyfee/agent-craft/tree/main/m08_langgraph_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/154576812) | Langgraph三要素 · LangSmith · ReAct · 提示词安全注入                   |  ⭐⭐⭐  |
-|             | [09 LangGraph 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/m09_langgraph_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154803618) | Human-in-the-Loop · Graph-as-a-Tool · Multi-Agent 多智能体编排     | ⭐⭐⭐⭐  |
-| 🧠 **智能篇**  | [10 MCP 基础 (Server)](https://github.com/Annyfee/agent-craft/tree/main/m10_mcp_basics)                    | [🏠](https://blog.csdn.net/2401_87328929/article/details/155660129) | Stdio · Streamable HTTP · FastMCP框架 · Transport通信 · 构建私有 MCP |  ⭐⭐   |
-|             | [11 MCP 进阶 (Client)](https://github.com/Annyfee/agent-craft/tree/main/m11_mcp_advanced)                  | [🏠](https://blog.csdn.net/2401_87328929/article/details/155316396) | langchain-mcp-adapters框架 · 流式输出 · AsyncExitStack · 连接公共MCP   |  ⭐⭐⭐  |
-|             | [12 Agents SDK & Swarm 模式](https://github.com/Annyfee/agent-craft/tree/main/m12_agents_sdk_swarm)        | [🏠](https://blog.csdn.net/2401_87328929/article/details/155890608) | Swarm · Handoff · Agents SDK · 去中心化 ·“航空公司客服”项目              | ⭐⭐⭐⭐  |
-| 🏁 **实战篇**  | 13 Streamlit 快速入门                                                                                        |                                🚧撰写中                                | `st.chat_input` · `st.session_state` · 封装 RAG Agent          |  ⭐⭐⭐  |
-|             | 14 综合实战项目                                                                                                |                                 🚧                                  | LangGraph + RAG + MCP + Streamlit + Vercel                   | ⭐⭐⭐⭐⭐ |
-| 🚀 **工程篇**  | 15 部署上线与项目总结                                                                                             |                                 🚧                                  | `Ollama` · `LM Studio` · `LangServe`                         |  ⭐⭐⭐  |
+|     章节      | 模块                                                                                                       |                                  博客                                  | 核心关键词                                                        |  难度   |
+|:-----------:|:---------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------:|:-------------------------------------------------------------|:-----:|
+| 🏗️ **基础篇** | [01 Agent 入门 & 环境搭建](https://github.com/Annyfee/agent-craft/tree/main/m01_agent_introduction)            | [🏠](https://blog.csdn.net/2401_87328929/article/details/153729555)  | OpenAI API                                                   |   ⭐   |
+|             | [02 LLM 基础调用](https://github.com/Annyfee/agent-craft/tree/main/m02_llm_fundamentals)                     | [🏠](https://blog.csdn.net/2401_87328929/article/details/153735431)  | LLM API 调用 · prompt · 上下文记忆                                  |   ⭐   |
+|             | [03 Function Calling 与工具调用](https://github.com/Annyfee/agent-craft/tree/main/m03_function_calling_tools) | [🏠](https://blog.csdn.net/2401_87328929/article/details/153866573)  | Function Call · 工具函数封装                                       |  ⭐⭐   |
+| ⚙️ **框架篇**  | [04 LangChain 基础篇](https://github.com/Annyfee/agent-craft/tree/main/m04_langchain_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/153978186)  | LLM · Prompt · Chain · Memory                                |  ⭐⭐   |
+|             | [05 LangChain 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/m05_langchain_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154064397)  | Agents · 缓存 · 流式输出                                           |  ⭐⭐⭐  |
+|             | [06 RAG 基础篇](https://github.com/Annyfee/agent-craft/tree/main/m06_rag_basics)                            | [🏠](https://blog.csdn.net/2401_87328929/article/details/154230067)  | RAG概念 · Split · Embedding · FAISS · RAG 链                    |  ⭐⭐   |
+|             | [07 RAG 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/m07_rag_advanced)                          | [🏠](https://blog.csdn.net/2401_87328929/article/details/154408744)  | Chroma · Reranker · RAG工具化 · 集成                              |  ⭐⭐⭐  |
+|             | [08 LangGraph 基础篇](https://github.com/Annyfee/agent-craft/tree/main/m08_langgraph_basics)                | [🏠](https://blog.csdn.net/2401_87328929/article/details/154576812)  | Langgraph三要素 · LangSmith · ReAct · 提示词安全注入                   |  ⭐⭐⭐  |
+|             | [09 LangGraph 进阶篇](https://github.com/Annyfee/agent-craft/tree/main/m09_langgraph_advanced)              | [🏠](https://blog.csdn.net/2401_87328929/article/details/154803618)  | Human-in-the-Loop · Graph-as-a-Tool · Multi-Agent 多智能体编排     | ⭐⭐⭐⭐  |
+| 🧠 **智能篇**  | [10 MCP 基础 (Server)](https://github.com/Annyfee/agent-craft/tree/main/m10_mcp_basics)                    | [🏠](https://blog.csdn.net/2401_87328929/article/details/155660129)  | Stdio · Streamable HTTP · FastMCP框架 · Transport通信 · 构建私有 MCP |  ⭐⭐   |
+|             | [11 MCP 进阶 (Client)](https://github.com/Annyfee/agent-craft/tree/main/m11_mcp_advanced)                  | [🏠](https://blog.csdn.net/2401_87328929/article/details/155316396)  | langchain-mcp-adapters框架 · 流式输出 · AsyncExitStack · 连接公共MCP   |  ⭐⭐⭐  |
+|             | [12 Agents SDK & Swarm 模式](https://github.com/Annyfee/agent-craft/tree/main/m12_agents_sdk_swarm)        | [🏠](https://blog.csdn.net/2401_87328929/article/details/155890608)  | Swarm · Handoff · Agents SDK · 去中心化 ·“航空公司客服”项目              | ⭐⭐⭐⭐  |
+| 🏁 **实战篇**  | [13 Streamlit 快速入门](https://blog.csdn.net/2401_87328929/article/details/156131372)                       | [🏠](https://github.com/Annyfee/agent-craft/tree/main/m13_streamlit) | Streamlit · st.chat_message · 异步事件流 · 会话持久化 · “智能客服驾驶舱”      |  ⭐⭐⭐  |
+|             | 14 综合实战项目                                                                                                |                                🚧撰写中                                 | LangGraph + RAG + MCP + Streamlit + Vercel                   | ⭐⭐⭐⭐⭐ |
+| 🚀 **工程篇**  | 15 部署上线与项目总结                                                                                             |                                  🚧                                  | `Ollama` · `LM Studio` · `LangServe`                         |  ⭐⭐⭐  |
 
 ---
 
 ## 🧩 当前学习建议（适用于已完成模块）
 
-目前已开放模块：**01 ~ 12**。  
+目前已开放模块：**01 ~ 13**。  
 建议按顺序学习，每一章都有完整代码示例与注释。
 
 ### ✅ 模块 01 — Agent 入门 & 环境搭建
@@ -115,7 +115,12 @@
 - **目标**：理解Swarm模式，并能用Agents SDK做一个多Agent协调互通的客服集群。
 - **内容**：Swarm | Handoff | Context_variables | Agents SDK | 去中心化
 
-> 📌 后续模块将陆续开放（Streamlit、模型部署等）
+### ✅ 模块 13 Streamlit 快速入门
+
+- **目标**：学会Streamlit的基础组件，并能用Streamlit对接Agents SDK，快速构建起一个前后端联通的实际产品。
+- **内容**：Swarm | Handoff | Context_variables | Agents SDK | 去中心化
+
+> 📌 后续模块将陆续开放（综合实战等）
 
 ---
 
