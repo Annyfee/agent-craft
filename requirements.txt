@@ -1,4 +1,4 @@
-openai-agents==0.6.4
+agents==1.4.0
 httpx==0.28.1
 huggingface_hub==0.36.0
 langchain==1.2.0
