@@ -1,4 +1,4 @@
-agents==1.4.0
+openai-agents==0.6.4
 httpx==0.28.1
 huggingface_hub==0.36.0
 langchain==1.2.0
@@ -11,7 +11,7 @@ langchain_mcp_adapters==0.2.1
 langchain_openai==1.1.6
 langchain_text_splitters==1.1.0
 langgraph==1.0.5
-langsmith==0.6.0
+langsmith==0.5.0
 mcp==1.25.0
 nest_asyncio==1.6.0
 openai==2.14.0
@@ -20,5 +20,3 @@ python-dotenv==1.2.1
 Requests==2.32.5
 setuptools==80.9.0
 streamlit==1.52.2
-~treamlit==1.28.2
-~treamlit==1.52.2
