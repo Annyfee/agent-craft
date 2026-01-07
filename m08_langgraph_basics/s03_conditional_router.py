@@ -19,9 +19,9 @@ llm = ChatOpenAI(
 
 # 工具定义
 @tool
-def get_weather(loaction):
+def get_weather(location):
     """模拟获取天气"""
-    return f'{loaction}当前天气：23℃，晴，风力2级'
+    return f'{location}当前天气：23℃，晴，风力2级'
 
 
 tools = [get_weather]
