@@ -5,7 +5,6 @@ from langchain.tools import tool
 from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.prebuilt import ToolNode
-from typing import TypedDict
 
 # LangSmith调试
 os.environ["LANGCHAIN_TRACING_V2"] = "true" # 总开关，决定启用追踪功能
@@ -21,7 +20,7 @@ llm = ChatOpenAI(
 
 # 构建子工作流
 # 1.子任务状态
-class RetryState(TypedDict):
+class RetryState(MessagesState):
     query: str
     attempt: int
     result: str

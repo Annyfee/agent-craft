@@ -6,8 +6,7 @@ from langchain_core.messages import HumanMessage,SystemMessage
 from langgraph.graph import StateGraph,START,END
 from langgraph.prebuilt import ToolNode
 from langgraph.checkpoint.memory import MemorySaver
-from typing import TypedDict,Annotated
-from langgraph.graph.message import add_messages
+from langgraph.graph.message import add_messages, MessagesState
 
 # LangSmith调试
 os.environ["LANGCHAIN_TRACING_V2"] = "true" # 总开关，决定启用追踪功能
@@ -23,7 +22,7 @@ llm = ChatOpenAI(
 # === 一、Graph-as-a-Tool ===
 # === 模拟一个不稳定的SSH日志查询过程 ===
 
-class SSHState(TypedDict):
+class SSHState(MessagesState):
     target_ip: str
     attempt: int
     logs: str
@@ -82,13 +81,19 @@ def restart_service(service_name:str):
 # === 总控调度 + 专家分工 ===
 
 # 1. 共享状态
-class AgentState(TypedDict):
-    messages:Annotated[list,add_messages]
+class AgentState(MessagesState):
     next_speaker:str
 
 # 2. 专家节点
 def log_expert(state:AgentState):
-    prompt = "你是日志分析专家，使用工具分析服务器日志，找出报错原因。回答需简洁。"
+    prompt = """你是日志分析专家，使用工具分析服务器日志，找出报错原因。
+
+    工作规则：
+    1. 如果消息中还没有日志数据，调用 analyze_server_logs 工具获取
+    2. 如果消息中已经有工具返回的日志结果，直接分析并给出结论，不要再调用工具
+    3. 回答需简洁明确
+    
+    请先检查对话历史中是否已有日志数据。"""
     messages = [SystemMessage(content=prompt)] + state['messages']
     # 绑定子图工具
     tools = [analyze_server_logs]
@@ -96,7 +101,14 @@ def log_expert(state:AgentState):
     return {"messages":[response]}
 
 def ops_expert(state:AgentState):
-    prompt = "你是运维专家。当收到修复指令时，请立即调用 'restart_service' 工具进行修复，不要输出任何额外的解释文本。"
+    prompt = """你是运维专家。
+    
+    工作规则：
+    1. 当收到修复指令且消息中有明确的故障原因时，调用 restart_service 工具进行修复
+    2. 只调用一次 restart_service 工具
+    3. 工具调用后，不要输出额外的解释文本
+    
+    请先检查对话历史，如果已经调用过工具，就等待结果。"""
     messages = [SystemMessage(content=prompt)] + state['messages']
     tools = [restart_service]
     # 绑定敏感工具

@@ -3,11 +3,8 @@ from config import OPENAI_API_KEY,LANGCHAIN_API_KEY
 from langchain_openai import ChatOpenAI
 from langchain.tools import tool
 from langchain_core.messages import HumanMessage, SystemMessage
-from langgraph.graph import StateGraph, START, END
+from langgraph.graph import StateGraph, START, END, MessagesState
 from langgraph.prebuilt import ToolNode
-from typing import TypedDict # 定义数据类型
-from typing import Annotated # 注释说明细节
-from langgraph.graph.message import add_messages
 
 # LangSmith调试
 os.environ["LANGCHAIN_TRACING_V2"] = "true" # 总开关，决定启用追踪功能
@@ -39,8 +36,7 @@ def generate_code(requirement:str):
 
 
 # 共享状态定义
-class AgentState(TypedDict):
-    messages: Annotated[list,add_messages] # 自动累积对话历史
+class AgentState(MessagesState):
     next_speaker: str
 
 # 专家节点
