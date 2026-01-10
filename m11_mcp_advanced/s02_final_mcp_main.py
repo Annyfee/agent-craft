@@ -34,7 +34,7 @@ MCP_SERVERS = {
     # "本地天气":{
     #     "transport": "stdio",
     #     "command": "python",
-    #     "args": ["-m", "m10_mcp_basics.stdio_server"],
+    #     "args": ["-m", "m10_mcp_basics.s01_stdio_server"],
     #     "env": None
     # },
 
