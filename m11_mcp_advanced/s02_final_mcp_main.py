@@ -1,3 +1,4 @@
+import json
 import os
 import asyncio
 
@@ -6,7 +7,7 @@ from langchain_mcp_adapters.client import MultiServerMCPClient
 
 # LangChain/LangGraph 组件
 from langchain_openai import ChatOpenAI
-from langchain_core.messages import SystemMessage
+from langchain_core.messages import SystemMessage, ToolMessage
 from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.prebuilt import ToolNode
 
@@ -64,7 +65,20 @@ def build_graph(available_tools):
     sys_prompt = "你是一个地理位置助手，请根据用户需求调用工具查询信息。"
 
     async def agent_node(state: MessagesState):
-        messages = [SystemMessage(content=sys_prompt)] + state["messages"]
+        # 格式化消息，确保ToolMessage的content是字符串
+        formatted_messages = []
+        for msg in state["messages"]:
+            if isinstance(msg,ToolMessage) and not isinstance(msg.content,str):
+                # 将list/dict转为JSON字符串
+                formatted_messages.append(
+                    ToolMessage(
+                        content=json.dumps(msg.content,ensure_ascii=False),
+                        tool_call_id=msg.tool_call_id
+                    )
+                )
+            else:
+                formatted_messages.append(msg)
+        messages = [SystemMessage(content=sys_prompt)] + formatted_messages
         return {"messages": [await llm_with_tools.ainvoke(messages)]}
 
     workflow = StateGraph(MessagesState)
