@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from langchain_huggingface import HuggingFaceEmbeddings
+from huggingface_hub import snapshot_download
 
 # 获取embeddings模型 -- 首次调用时自动下载
 def get_embeddings(model_name="BAAI/bge-small-zh-v1.5",device="cpu",**kwargs):
@@ -10,7 +11,6 @@ def get_embeddings(model_name="BAAI/bge-small-zh-v1.5",device="cpu",**kwargs):
     if not local_dir.exists():
         print(f'⚠️ 首次使用嵌入模型，正在下载到{local_dir.absolute()}')
         print("💡 提示：需要联网(必需梯子)，完成后可离线使用")
-        from huggingface_hub import snapshot_download
         # 模型下载工具
         snapshot_download(
             repo_id = model_name,
