@@ -197,6 +197,6 @@ python "m01_agent_introduction/Agent-demo.py"
 - 📩 技术交流：微信 a19731567148（备注 Agent）
 - 📚 博客主页：[CSDN 主页](https://blog.csdn.net/2401_87328929)
 
-🌟 如果这个项目帮到了你，请给我点个 Star ⭐，让更多人看到它！
+🌟 如果这个项目帮到了你，请给我点个 Star ⭐，这将是我持续更新的最大动力！
 
 
