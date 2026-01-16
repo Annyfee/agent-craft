@@ -38,7 +38,7 @@ print('---Chroma数据库已加载---\n')
 # --- 模块 B (R-A-G Flow) ---
 # 1. R-检索--强化版
 # 1.1 基础检索器(Base Retriever) - '粗召回'
-base_retriever = db.as_retriever(search_kwargs={"k":50}) # K调大到60
+base_retriever = db.as_retriever(search_kwargs={"k":50}) # K调大到50
 # 1.2 Reranker (重排器) - "精排序" -- 首次运行需要耗时下载
 print('正在加载 Reranker模型 (bge-reranker-base)...')
 encoder = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-base") # 加载Ranker模型
