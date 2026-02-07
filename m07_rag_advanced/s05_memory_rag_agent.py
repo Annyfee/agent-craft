@@ -16,7 +16,6 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables import RunnableWithMessageHistory
 
 
-
 # 1. 构建一个可复用的 RAG链条
 def build_rag_chain(llm_instance):
     print('---正在构建RAG链条---')
