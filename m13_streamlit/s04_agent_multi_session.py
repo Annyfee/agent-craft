@@ -37,9 +37,12 @@ st.caption(f"🚀 实战三：基于 Agents SDK 的多智能体协作 (ID: {st.s
 
 # 初始化持久化 Session
 if "session" not in st.session_state:
+	# 使用绝对路径定位数据库，确保跨环境稳定性
+	PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 	st.session_state.session = SQLiteSession( # 持久化内存，将AI对话历史搬到数据库中
 		session_id=st.session_state.session_id,
-		db_path="./m13_streamlit/conversations.db"
+		db_path=os.path.join(PROJECT_ROOT, "m13_streamlit", "conversations.db")
 	)
 
 if "display_messages" not in st.session_state: # 存储对话记录
