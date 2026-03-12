@@ -205,4 +205,4 @@ python "m01_agent_introduction/Agent-demo.py"
 
 🌟 如果这个项目帮到了你，请给我点个 Star ⭐，这将是我持续更新的最大动力！
 
-
+[![Star History Chart](https://api.star-history.com/svg?repos=Annyfee/agent-craft&type=Date)](https://star-history.com/#Annyfee/agent-craft&Date)
