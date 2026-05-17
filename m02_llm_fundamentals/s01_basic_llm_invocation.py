@@ -14,4 +14,6 @@ response = client.chat.completions.create(
     stream=False # 非流式输出, 只会等语句全部生成才返回
 )
 
+if not response.choices or response.choices[0].message is None:
+    raise ValueError("LLM returned empty or filtered response")
 print(response.choices[0].message.content)
