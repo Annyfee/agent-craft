@@ -24,7 +24,11 @@ response_high_temperature = client.chat.completions.create(
 
 
 # 测试1：低温度 (稳定)
+if not response_low_temperature.choices or response_low_temperature.choices[0].message is None:
+    raise ValueError("LLM returned empty or filtered response")
 print(f"温度 0.1: {response_low_temperature.choices[0].message.content}")
 
 # 测试2：高温度 (随机)
+if not response_high_temperature.choices or response_high_temperature.choices[0].message is None:
+    raise ValueError("LLM returned empty or filtered response")
 print(f"温度 1.3: {response_high_temperature.choices[0].message.content}")

@@ -14,6 +14,8 @@ def chat_loop(agent_client):
             model="deepseek-chat",
             messages=messages
         )
+        if not response.choices or response.choices[0].message is None:
+            raise ValueError("LLM returned empty or filtered response")
         answer = response.choices[0].message.content
         print(f'回答:{answer}')
 

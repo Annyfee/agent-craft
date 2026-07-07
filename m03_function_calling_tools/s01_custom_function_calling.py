@@ -47,6 +47,8 @@ def chat_loop(agent_client, tools):
         tools=tools,  # 调用工具
         tool_choice="auto"  # 模型自主选择是否调用工具
     )
+    if not response.choices or response.choices[0].message is None:
+        raise ValueError("LLM returned empty or filtered response")
     message = response.choices[0].message
     # 如果有该参数，证明ai调用了工具
     if message.tool_calls:
@@ -74,10 +76,14 @@ def chat_loop(agent_client, tools):
             messages=messages
         )
         print('已调用工具...')
+        if not final_res.choices or final_res.choices[0].message is None:
+            raise ValueError("LLM returned empty or filtered response")
         print(f'回答:{final_res.choices[0].message.content}')
     else:
         # 模型没有要调用工具, 直接返回
         print('未调用工具...')
+        if not response.choices or response.choices[0].message is None:
+            raise ValueError("LLM returned empty or filtered response")
         print(f'回答:{response.choices[0].message.content}')
 
 
