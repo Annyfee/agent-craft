@@ -1,6 +1,7 @@
 import json
 import os
 import asyncio
+from urllib.parse import urlsplit
 
 # --- 核心：导入官方库 ---
 from langchain_mcp_adapters.client import MultiServerMCPClient
@@ -14,6 +15,27 @@ from langgraph.prebuilt import ToolNode
 # 复用你的流式输出模块和配置
 from m11_mcp_advanced.s01_agent_stream import run_agent_with_streaming
 from config import OPENAI_API_KEY, AMAP_MAPS_API_KEY
+
+
+def required_env(name: str) -> str:
+    """避免在可选远端 MCP 配置中发送空 URL 或空 Bearer 凭据。"""
+    value = os.environ.get(name, "").strip()
+    if not value:
+        raise ValueError(f"请先设置非空的 {name}")
+    return value
+
+
+def required_mcp_url(name: str) -> str:
+    """远端 Bearer 凭据仅发往 HTTPS；本机回环地址可用于离线练习。"""
+    value = required_env(name)
+    parsed = urlsplit(value)
+    loopback_http = parsed.scheme == "http" and parsed.hostname in {
+        "localhost", "127.0.0.1", "::1"
+    }
+    if not parsed.hostname or (parsed.scheme != "https" and not loopback_http):
+        raise ValueError(f"{name} 必须是 HTTPS，或本机回环测试地址")
+    return value
+
 
 # === 配置 MCP 服务器 ===
 MCP_SERVERS = {
@@ -29,6 +51,17 @@ MCP_SERVERS = {
     # "高德地图" :{
     #     "transport":"streamable_http",
     #     "url": f"https://mcp.amap.com/mcp?key={AMAP_MAPS_API_KEY}"
+    # },
+
+    # 方式1.3: 需要 Bearer Header 的远端 MCP（可选）
+    # 在根目录 .env 中设置 MCP_HTTP_URL 和 MCP_BEARER_TOKEN 后再取消注释。
+    # 如果只测试这个服务，也请注释上方默认启用的高德 stdio 配置。
+    # "远端 Bearer MCP": {
+    #     "transport": "streamable_http",
+    #     "url": required_mcp_url("MCP_HTTP_URL"),
+    #     "headers": {
+    #         "Authorization": f"Bearer {required_env('MCP_BEARER_TOKEN')}"
+    #     },
     # },
 
     # 方式2.1: 本地工具 —— stdio模式

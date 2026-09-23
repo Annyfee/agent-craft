@@ -42,6 +42,14 @@
 
 > 💡 这是一个独立的示例应用，展示了如何使用官方库快速实现MCP功能，适合作为实际项目的参考。
 
+#### 可选：连接需要 Bearer 鉴权的远端 MCP
+
+`s02_final_mcp_main.py` 的 `MCP_SERVERS` 还提供了注释状态的「远端 Bearer MCP」配置。若服务使用 Streamable HTTP 和 `Authorization: Bearer`，在根目录的 `.env` 中设置自己的 `MCP_HTTP_URL` 与 `MCP_BEARER_TOKEN`，再取消注释该配置。若只测试远端服务，也要注释默认启用的高德 stdio 配置。`required_env()` 会拒绝缺失或空白的值，`required_mcp_url()` 仅允许 HTTPS 远端和本机回环 HTTP 测试地址；密钥只放在 Header 中，不拼接到 URL。请只连接可信任的服务。本仓新增的 `.gitignore` 忽略 `.env` 和本地变体，请勿把真实密钥写入源码、Issue 或 PR。
+
+例如，[百智云 Agent Toolkit 的公开接入说明](https://github.com/chaitin/baizhi-agent-toolkit#连接信息)给出的 `MCP_HTTP_URL` 为 `https://agent-toolkit.app.baizhi.cloud/mcp`，鉴权方式为 `Bearer <API Key>`。这是一个**可选的第三方托管服务例子**：公开仓库仅含集成配置、文档和测试，不包含托管后端源码；需用户自备 Key，部分工具调用可能消耗额度。工具参数会发往所配置的服务。示例只说明如何填写客户端配置，不能据此认为已经完成线上连接或工具调用验收。
+
+这里使用仓库锁定的 `langchain_mcp_adapters==0.2.1`：官方 `MultiServerMCPClient` 会把 `headers` 交给 Streamable HTTP 会话，现有示例随后通过 `get_tools()` 把工具交给 LangGraph。下方教学用的**自写 HTTP 传输**目前不接收自定义鉴权 Header，不能直接套用这段配置。当前 `config.py` 在导入时会校验 `OPENAI_API_KEY`、`LANGCHAIN_API_KEY`、`AMAP_MAPS_API_KEY`、`CHATGPT_API_KEY` 四项，即使注释高德配置也仍如此；运行完整的 `s02_final_mcp_main.py` 还会调用模型。原示例的系统提示和固定查询面向地图，改用其他 MCP 时要一起改为适合其工具的任务。请先用获准的服务与测试凭据验证连接和费用边界。
+
 ---
 
 ### 组件系统：自定义MCP客户端实现
@@ -219,9 +227,9 @@
   - 高德地图MCP服务需要 `AMAP_MAPS_API_KEY` 环境变量配置
 
 - **运行说明**：
-  - 独立组件可以直接运行：`python s02_final_mcp_main.py`
-  - 组件系统示例：`python mcp_main.py`
-  - 本地MCP服务需要先启动：`python -m m10_mcp_basics.streamable_http_server`
+  - 在仓库根目录运行官方库示例：`python -m m11_mcp_advanced.s02_final_mcp_main`
+  - 在仓库根目录运行组件系统示例：`python -m m11_mcp_advanced.mcp_main`
+  - 本地MCP服务需要先启动：`python -m m10_mcp_basics.s02_streamable_http_server`
 
 ---
 
