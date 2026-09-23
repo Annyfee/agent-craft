@@ -185,7 +185,7 @@ CHATGPT_API_KEY=your_chatgpt_api_key
 > 💡 **获取API Key**: 访问 [DeepSeek](https://platform.deepseek.com/)、[LangSmith](https://smith.langchain.com/)、[高德地图](https://console.amap.com/dev/key/app)、[ChatGPT](https://platform.openai.com/api-keys)
 > 注册并获取API Key
 > 
-> 📌 **补充说明**: 除了 OPENAI_API_KEY (LLM 的 API Key) 是刚需外，其他 API Key 按需填入，无需一次性全部配置。
+> 📌 **补充说明**: 当前 `config.py` 导入时会校验以上四个变量均非空，即使某个示例不会调用对应服务。实际外部调用和可能的费用仍取决于所运行的模块。
 
 ### 3️⃣ 运行示例
 
