@@ -1,0 +1,5 @@
+# 与根目录 requirements.txt 的版本保持一致；此示例无需模型或向量库。
+langchain_mcp_adapters==0.2.1
+langchain_core==1.2.6
+mcp==1.25.0
+httpx==0.28.1
