@@ -52,6 +52,27 @@
 
 ---
 
+### 独立练习：`s03_parallel_search.py`（免费网页搜索与抓取）
+
+通过与上方官方库示例相同的 `MultiServerMCPClient`，连接 [Parallel Search MCP](https://docs.parallel.ai/integrations/mcp/search-mcp) 的 Streamable HTTP 端点 `https://search.parallel.ai/mcp`。用 `get_tools()` 发现工具后，通过 LangChain 工具的 `ainvoke()` 调用 `web_search` 或 `web_fetch`，打印包含来源的内容块。
+
+在仓库根目录安装此练习的依赖并运行（Python 3.10+）：
+
+```bash
+python -m venv .venv-parallel
+source .venv-parallel/bin/activate
+# Windows PowerShell: .venv-parallel\Scripts\Activate.ps1
+python -m pip install -r m11_mcp_advanced/requirements-parallel.txt
+python -m m11_mcp_advanced.s03_parallel_search search "查找 Python asyncio 官方教程" --query "Python asyncio official tutorial"
+python -m m11_mcp_advanced.s03_parallel_search fetch https://docs.python.org/3/library/asyncio.html
+```
+
+`--query` 可重复传入以提供多个关键词查询；`fetch` 可传入多个 URL（服务每次最多接受 20 个），默认返回内容摘要。该练习直接调用工具，不运行 LLM 或 Agent 循环，也不导入 `config.py`、读取 `.env` 或需要高德/模型/Parallel API Key。现有地图示例的配置不变。无需 Node.js 或本地 MCP 服务器。
+
+匿名端点免费，适合探索和轻量使用，但有速率限制，并非无限调用；单次工具调用的摘要总量约限制为 25,000 字符。查询和 URL 会发送给 Parallel，请避免提交敏感信息。网络、服务限流或工具错误会作为异常显示；需要网络连接。
+
+---
+
 ### 组件系统：自定义MCP客户端实现
 
 以下文件共同构成一个完整的自定义MCP客户端组件系统，实现了从传输层到应用层的完整封装。
@@ -221,8 +242,8 @@
   2. 再学习组件系统：`transports/base.py` → `transports/http.py` → `transports/stdio.py` → `mcp_client.py` → `mcp_bridge.py` → `mcp_main.py`
 
 - **环境准备**：
-  - 所有示例依赖根目录 `.env` 中的 API 密钥配置
-  - MCP服务需要Node.js环境，确保已安装并配置正确路径
+  - 地图与 Agent 示例依赖根目录 `.env` 中的 API 密钥配置；`s03_parallel_search.py` 独立练习不需要密钥
+  - 高德 stdio MCP 服务需要 Node.js 环境，确保已安装并配置正确路径
   - 运行前请确保已安装必要依赖：`pip install -r requirements.txt`
   - 高德地图MCP服务需要 `AMAP_MAPS_API_KEY` 环境变量配置
 
