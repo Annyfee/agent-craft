@@ -255,6 +255,8 @@ python -m m11_mcp_advanced.s03_parallel_search fetch https://docs.python.org/3/l
 ---
 
 ### 💡 **扩展建议**
+
+- [本地代码查询示例](sem-code.md)：通过带认证的 Streamable HTTP 连接 Sem 预览版，直接查询代码实体，无需模型 API Key。
 - 扩展MCP客户端，支持更多高级特性（如超时控制、重试机制等）
 - 实现自定义的MCP服务，与客户端组件配合使用
 - 探索将MCP客户端与其他AI框架集成
