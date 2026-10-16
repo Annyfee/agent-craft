@@ -6,9 +6,10 @@
 
 ## 1. 启动 Sem HTTP 预览版
 
-**Sem 0.27.0 发布版尚不支持此 HTTP 接口**。需要从 HTTP 预览分支构建，
-接口尚在 [Sem PR #518](https://github.com/Ataraxy-Labs/sem/pull/518) 中等待合并。
-按 [Sem HTTP 指南](https://github.com/Ataraxy-Labs/sem/blob/feat/mcp-http/docs/mcp-http.md)
+**Sem 0.27.0 发布版尚不支持此 HTTP 接口**。接口已通过
+[Sem PR #518](https://github.com/Ataraxy-Labs/sem/pull/518) 合并到主分支；
+请构建提交 `2e6a47fcd35ce269eec702dd3532341dba52902b` 或之后的兼容版本。
+按 [Sem HTTP 指南](https://github.com/Ataraxy-Labs/sem/blob/2e6a47fcd35ce269eec702dd3532341dba52902b/docs/mcp-http.md)
 启动服务。配置显式 `SEM_REPO`（可信 Git 仓库的绝对路径）、随机
 `SEM_MCP_HTTP_TOKEN`，监听 `127.0.0.1:8765`。
 
