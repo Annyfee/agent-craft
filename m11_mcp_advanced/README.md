@@ -73,6 +73,24 @@ python -m m11_mcp_advanced.s03_parallel_search fetch https://docs.python.org/3/l
 
 ---
 
+### 独立练习：`s05_deed_page_publish.py`（把本地 HTML 发布成公开网页）
+
+同样使用 `MultiServerMCPClient`，连接 [deed.page](https://deed.page/docs) 的 Streamable HTTP 端点 `https://deed.page/mcp`。`get_tools()` 发现工具后，用 `ainvoke()` 调用 `publish_site` 把一个 HTML 文件发布为 `https://{slug}.deed.page/`，也可以用 `get_site` 查询、用 `delete_site` 删除。适合把 Agent 生成的报告或页面变成可分享的链接。
+
+依赖与上方练习相同，可复用同一个虚拟环境（Python 3.10+）：
+
+```bash
+python -m pip install -r m11_mcp_advanced/requirements-parallel.txt
+echo '<!doctype html><h1>Hello from agent-craft</h1>' > /tmp/hello.html
+python -m m11_mcp_advanced.s05_deed_page_publish publish /tmp/hello.html --ttl 600
+python -m m11_mcp_advanced.s05_deed_page_publish get <返回的 slug>
+DEED_PAGE_TOKEN=<返回的 token> python -m m11_mcp_advanced.s05_deed_page_publish delete <返回的 slug>
+```
+
+不需要注册账号或 API Key，也不读取 `.env`。首次发布的结果里会带一个 token，之后更新或删除这个页面都要用它，丢失后无法找回，请自行保存，不要提交到仓库。`--ttl` 让页面在指定秒数后过期；省略则长期保留。发布的内容任何人都能访问，HTML 会发送给 deed.page，请勿发布敏感信息。需要网络连接。
+
+---
+
 ### 组件系统：自定义MCP客户端实现
 
 以下文件共同构成一个完整的自定义MCP客户端组件系统，实现了从传输层到应用层的完整封装。
@@ -242,7 +260,7 @@ python -m m11_mcp_advanced.s03_parallel_search fetch https://docs.python.org/3/l
   2. 再学习组件系统：`transports/base.py` → `transports/http.py` → `transports/stdio.py` → `mcp_client.py` → `mcp_bridge.py` → `mcp_main.py`
 
 - **环境准备**：
-  - 地图与 Agent 示例依赖根目录 `.env` 中的 API 密钥配置；`s03_parallel_search.py` 独立练习不需要密钥
+  - 地图与 Agent 示例依赖根目录 `.env` 中的 API 密钥配置；`s03_parallel_search.py`、`s05_deed_page_publish.py` 独立练习不需要密钥
   - 高德 stdio MCP 服务需要 Node.js 环境，确保已安装并配置正确路径
   - 运行前请确保已安装必要依赖：`pip install -r requirements.txt`
   - 高德地图MCP服务需要 `AMAP_MAPS_API_KEY` 环境变量配置
